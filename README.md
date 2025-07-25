@@ -1,4 +1,4 @@
-# Mini Bootcamp: Road to Meridian
+# Workshop: Road to Meridian
 
 ![Hack Meridian](assets/hack-meridian.png)
 
