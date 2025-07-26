@@ -29,14 +29,22 @@
 **Content:** Complete REST API development with Rust
 
 **Main topics:**
-- 🔄 CRUD API structure
-- 🗄️ Database integration
-- 🔐 Authentication and authorization
-- 📡 REST endpoints
-- 🧪 Integration testing
-- 🚀 Deployment and production
+- 🔄 CRUD operations (Create, Read, Update, Delete)
+- 🛠️ Tide web framework and async-std runtime
+- 🔒 Concurrent state management with Arc<Mutex<HashMap>>
+- 📡 REST API endpoints and HTTP methods
+- 🧪 Manual testing with cURL
+- 🚀 Production deployment with Railway
 
-**[📋 View Lesson 2 content](./lesson2/README.md)** | **[🎥 Watch Lesson 2 on YouTube](https://www.youtube.com/watch?v=XozUaYcCQoo&t=2s&ab_channel=NearX)** *(Coming soon)*
+**🏆 Learning Challenge - COMPLETED ✅**
+- ✅ **JWT Authentication** - Complete token-based authentication system
+- ✅ **Refresh Tokens** - Automatic token renewal mechanism
+- ✅ **Environment Variables** - Dotenv integration for secure configuration
+- ✅ **Production Deployment** - Live API on Railway platform
+- ✅ **Postman Collection** - Ready-to-use testing documentation
+- ✅ **Automated Testing** - Complete test suite with shell scripts
+
+**[📋 View Lesson 2 content](./lesson2/README.md)** | **[🎥 Watch Lesson 2 on YouTube](https://www.youtube.com/watch?v=XozUaYcCQoo&t=2s&ab_channel=NearX)** | **[🚀 Live Demo](https://learn-rust-crud-production.up.railway.app)**
 
 ---
 
@@ -56,12 +64,21 @@
 
 ## 🏆 Bootcamp Challenges
 
-### Learning Challenge (Lesson 1)
+### Learning Challenge (Lesson 1) - ✅ COMPLETED
 - ✅ Add a power function and its inverse, logarithm to the **calculator** library in **calc3.rs**
 - ✅ Write tests and publish the new version (0.2.0) on **crates.io**
 
+### Learning Challenge (Lesson 2) - ✅ COMPLETED
+- ✅ **JWT Authentication**: Complete token-based authentication system implemented
+- ✅ **Refresh Tokens**: Automatic token renewal mechanism with secure token lifecycle
+- ✅ **Environment Variables**: Dotenv integration for secure configuration management
+- ✅ **Production Deployment**: Live API deployed on Railway platform
+- ✅ **Postman Collection**: Complete testing documentation with import files
+- ✅ **Automated Testing**: Comprehensive test suite with shell scripts
+- 🔄 **Database Integration**: HashMap with real database (PostgreSQL/SQLite) - *Optional next step*
+
 ### Career Challenge
-- 📱 Post on LinkedIn and Twitter with #road2meridian (1/3)
+- 📱 Post on LinkedIn and Twitter with #road2meridian (2/3)
 - ⭐ Tag Stellar
 - 🎓 Tag NearX
 
@@ -91,6 +108,17 @@
 - [🔧 Soroban Documentation](https://soroban.stellar.org/) - Smart contracts
 - [💡 Stellar Quest](https://quest.stellar.org/) - Learn Stellar
 - [🌐 Stellar Ecosystem](https://www.stellar.org/ecosystem) - Projects and tools
+
+### **Web Development & APIs**
+- [📖 Tide Documentation](https://docs.rs/tide) - Official Tide framework docs
+- [🔧 Serde Documentation](https://serde.rs/) - JSON serialization/deserialization
+- [🌐 Railway Documentation](https://docs.railway.app/) - Cloud deployment platform
+- [📡 REST API Best Practices](https://restfulapi.net/) - API design guidelines
+
+### **Testing & Development Tools**
+- [🧪 Postman](https://www.postman.com/) - API testing and development
+- [📱 Insomnia](https://insomnia.rest/) - Alternative to Postman
+- [🔍 cURL Documentation](https://curl.se/docs/) - Command-line HTTP client
 
 ### **Videos and Courses**
 - [🎥 Rust Tutorial for Beginners](https://www.youtube.com/watch?v=zF34dRivLOw)
