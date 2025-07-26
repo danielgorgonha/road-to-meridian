@@ -36,14 +36,6 @@
 - 🧪 Manual testing with cURL
 - 🚀 Production deployment with Railway
 
-**🏆 Learning Challenge - COMPLETED ✅**
-- ✅ **JWT Authentication** - Complete token-based authentication system
-- ✅ **Refresh Tokens** - Automatic token renewal mechanism
-- ✅ **Environment Variables** - Dotenv integration for secure configuration
-- ✅ **Production Deployment** - Live API on Railway platform
-- ✅ **Postman Collection** - Ready-to-use testing documentation
-- ✅ **Automated Testing** - Complete test suite with shell scripts
-
 **[📋 View Lesson 2 content](./lesson2/README.md)** | **[🎥 Watch Lesson 2 on YouTube](https://www.youtube.com/watch?v=XozUaYcCQoo&t=2s&ab_channel=NearX)** | **[🚀 Live Demo](https://learn-rust-crud-production.up.railway.app)**
 
 ---
