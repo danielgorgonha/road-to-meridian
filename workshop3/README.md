@@ -1,131 +1,171 @@
-# Workshop 3: Smartcontracts Avançado na Stellar com Soroban
+# Workshop 3: Smartcontracts Avançados na Stellar com Soroban
 
-## 📚 Visão Geral
+## 🚧 **EM BREVE - Aguardando Data de Realização**
 
-O Workshop 3 é o nível avançado da série "Road to Meridian", focado em tópicos avançados de smart contracts na Stellar Network. Este workshop prepara os participantes para o hackathon Meridian com conhecimentos de nível sênior.
+### 📅 Status do Workshop
 
-### 🎯 Objetivos do Workshop
-
-- ✅ Segurança avançada em smart contracts
-- ✅ Composabilidade entre contratos
-- ✅ Autenticação Passkey (FIDO)
-- ✅ Otimizações de performance
-- ✅ Padrões avançados de desenvolvimento
+**Status**: ⏳ **AGUARDANDO**  
+**Data Prevista**: Setembro 2025 (semana anterior ao Meridian)  
+**Local**: Online (transmissão ao vivo)  
+**Instrutor**: Lucas Oliveira (Head de Educação - Nerex)
 
 ---
 
-## 📋 Estrutura das Aulas
+## 🎯 O que será abordado no Workshop 3
 
-### [📖 Aula 1: Segurança Avançada em Smartcontracts](./aula1/README.md)
-**Conteúdo:** Técnicas avançadas de segurança, auditoria de contratos, e prevenção de vulnerabilidades
+### 📚 Tópicos Avançados
 
-**Principais tópicos:**
-- 🔒 Vulnerabilidades comuns em smart contracts
-- 🛡️ Padrões de segurança avançados
-- 🔍 Técnicas de auditoria
-- 🧪 Testes de penetração
-- 📊 Análise estática de código
+#### **1. Segurança em Smart Contracts**
+- ✅ **Vulnerabilidades comuns** e como evitá-las
+- ✅ **Padrões de segurança** para contratos robustos
+- ✅ **Auditoria de código** e boas práticas
+- ✅ **Testes de segurança** automatizados
 
-**[📋 Ver conteúdo da Aula 1](./aula1/README.md)**
+#### **2. Composabilidade entre Contratos**
+- ✅ **Interação entre contratos** na Stellar
+- ✅ **Padrões de composição** (DeFi-like)
+- ✅ **Orquestração** de múltiplos contratos
+- ✅ **Callbacks** e eventos entre contratos
 
----
+#### **3. Autenticação Passkey (FIDO)**
+- ✅ **WebAuthn** e padrões FIDO
+- ✅ **Integração** com smart contracts
+- ✅ **Experiência de usuário** sem seed phrases
+- ✅ **Segurança biométrica** na blockchain
 
-### [🚀 Aula 2: Composabilidade entre Contratos](./aula2/README.md)
-**Conteúdo:** Como contratos interagem entre si, padrões de composição e arquiteturas complexas
-
-**Principais tópicos:**
-- 🔗 Interação entre contratos
-- 🏗️ Padrões de composição
-- 📦 Arquiteturas modulares
-- 🔄 Callbacks e eventos
-- 🎯 DeFi patterns
-
-**[📋 Ver conteúdo da Aula 2](./aula2/README.md)**
-
----
-
-### [🔐 Aula 3: Autenticação Passkey e Tópicos Avançados](./aula3/README.md)
-**Conteúdo:** Autenticação FIDO, otimizações de performance e tópicos avançados
-
-**Principais tópicos:**
-- 🔑 Autenticação Passkey (FIDO)
-- ⚡ Otimizações de performance
-- 🎯 Padrões avançados
-- 🚀 Deploy em produção
-- 🔮 Futuro do Soroban
-
-**[📋 Ver conteúdo da Aula 3](./aula3/README.md)**
+#### **4. Otimizações de Performance**
+- ✅ **Gas optimization** em Soroban
+- ✅ **Estruturas de dados** eficientes
+- ✅ **Caching** e estratégias de storage
+- ✅ **Monitoramento** de performance
 
 ---
 
-## 🏆 Desafios Avançados
+## 🏗️ Projeto Prático
 
-### Desafio 1: Sistema de Segurança Multi-Camadas
-- ✅ Implementar sistema de autenticação multi-fator
-- ✅ Auditoria automática de contratos
-- ✅ Sistema de detecção de anomalias
-- ✅ Recovery mechanisms
+### **Sistema Avançado de Votação com NFTs**
 
-### Desafio 2: Plataforma DeFi Completa
-- ✅ DEX com múltiplos pools
-- ✅ Sistema de yield farming
-- ✅ Governança on-chain
-- ✅ Integração cross-chain
+O Workshop 3 terá como projeto prático um **sistema de votação avançado** que inclui:
 
-### Desafio 3: Aplicação Enterprise
-- ✅ Sistema de supply chain
-- ✅ Plataforma de crowdfunding
-- ✅ Marketplace descentralizado
-- ✅ Sistema de identidade digital
+- 🗳️ **Votação descentralizada** com múltiplas opções
+- 🎨 **NFTs como credenciais** de votação
+- 🔐 **Autenticação Passkey** para acesso
+- 🔗 **Composabilidade** entre contratos
+- 🛡️ **Segurança avançada** implementada
 
 ---
 
-## 🎯 Preparação para o Meridian
+## 📋 Pré-requisitos
 
-### Habilidades Necessárias
-- ✅ Domínio completo de Rust e Soroban
-- ✅ Conhecimento avançado de segurança
-- ✅ Experiência com arquiteturas complexas
-- ✅ Capacidade de inovação e criatividade
+### **Workshops Anteriores**
+- ✅ **Workshop 1**: Fundamentos de Rust e WebAssembly
+- ✅ **Workshop 2**: Smart Contracts básicos e frontend
 
-### Projetos Recomendados
-- 🏆 DEX inovador
-- 🏆 Sistema de identidade descentralizada
-- 🏆 Plataforma de gaming
-- 🏆 Solução DeFi única
+### **Conhecimentos Necessários**
+- ✅ Rust intermediário
+- ✅ Conceitos de blockchain
+- ✅ Smart contracts básicos
+- ✅ Frontend (React/TypeScript)
 
 ---
 
-## 📚 Recursos Avançados
+## 🎓 Benefícios do Workshop 3
 
-### Documentação Especializada
+### **Para o Meridian Hackathon**
+- 🚀 **Projetos mais robustos** e seguros
+- 💡 **Ideias inovadoras** com composabilidade
+- 🏆 **Vantagem competitiva** com features avançadas
+- 🔧 **Ferramentas** para desenvolvimento rápido
+
+### **Para a Carreira**
+- 📈 **Conhecimento avançado** em blockchain
+- 🌟 **Diferencial** no mercado
+- 🤝 **Networking** com especialistas
+- 📚 **Certificação** de conhecimento
+
+---
+
+## 📚 Recursos Preparatórios
+
+### **Documentação Recomendada**
 - [Soroban Security](https://soroban.stellar.org/docs/security)
-- [Stellar Advanced Patterns](https://developers.stellar.org/docs/advanced)
-- [Rust Security Guidelines](https://rust-lang.github.io/rust-clippy/master/)
+- [FIDO Alliance](https://fidoalliance.org/)
+- [WebAuthn Guide](https://webauthn.guide/)
+- [Stellar Smart Contracts](https://soroban.stellar.org/)
 
-### Ferramentas Avançadas
-- [Manticore](https://github.com/trailofbits/manticore) - Análise dinâmica
-- [Slither](https://github.com/crytic/slither) - Análise estática
-- [Echidna](https://github.com/crytic/echidna) - Fuzzing
-
-### Comunidade
-- [Stellar Developers Discord](https://discord.gg/stellar)
-- [Rust Security Working Group](https://github.com/rust-secure-code/wg)
-- [NearX Advanced Community](https://nearx.com.br/advanced)
+### **Projetos para Estudo**
+- [Soroban Examples](https://github.com/stellar/soroban-examples)
+- [Stellar Quest](https://quest.stellar.org/)
+- [Dev 30K Challenges](https://github.com/nerex-education/dev30k)
 
 ---
 
-## 🚀 Próximos Passos
+## 🎯 Preparação para o Workshop
 
-### Após o Workshop 3
-- 🎯 Participação no Meridian Hackathon
-- 🏆 Desenvolvimento de projetos inovadores
-- 🌟 Contribuição para o ecossistema Stellar
-- 💼 Oportunidades de carreira em blockchain
+### **Antes do Workshop 3**
+1. **Revisar** Workshop 1 e 2
+2. **Praticar** Rust e smart contracts
+3. **Estudar** conceitos de segurança
+4. **Explorar** padrões de composabilidade
+
+### **Durante o Workshop**
+1. **Participar** ativamente das aulas
+2. **Fazer** o projeto prático
+3. **Tirar** dúvidas em tempo real
+4. **Conectar** com outros participantes
 
 ---
 
-*Desenvolvido para Meridian Hackathon 2025 - Rio de Janeiro*
+## 🚀 Após o Workshop 3
+
+### **Próximos Passos**
+- 🏆 **Meridian Hackathon** (15-16 de setembro)
+- 🌟 **Projetos inovadores** com conhecimento avançado
+- 💼 **Oportunidades** de carreira em blockchain
+- 🤝 **Comunidade** ativa de desenvolvedores
+
+### **Recursos Contínuos**
+- 📖 **Documentação** completa dos workshops
+- 🎥 **Vídeos** das aulas disponíveis
+- 💬 **Comunidade** para suporte
+- 🆕 **Atualizações** e novos conteúdos
+
+---
+
+## 📞 Informações e Contato
+
+### **Organização**
+- **Plataforma**: Nerex Education
+- **Instrutor**: Lucas Oliveira
+- **Suporte**: [Discord Nerex](https://discord.gg/nerex)
+- **Email**: contato@nerex.com.br
+
+### **Redes Sociais**
+- **LinkedIn**: [Nerex Education](https://linkedin.com/company/nerex)
+- **YouTube**: [Nerex Channel](https://youtube.com/@nerex)
+- **GitHub**: [Nerex Projects](https://github.com/nerex-education)
+
+---
+
+## 🎉 Meridian Hackathon
+
+### **Evento Principal**
+- **Data**: 15-16 de setembro 2025
+- **Local**: Copacabana Palace, Rio de Janeiro
+- **Participantes**: 500 desenvolvedores
+- **Premiação**: $50.000
+
+### **Workshop 3 como Preparação**
+O Workshop 3 é a **preparação final** para o Meridian, fornecendo:
+- 🛠️ **Ferramentas avançadas** para desenvolvimento
+- 💡 **Ideias inovadoras** para projetos
+- 🏆 **Vantagem competitiva** no hackathon
+- 🤝 **Networking** com especialistas
+
+---
+
+*Workshop 3 - Preparação Final para o Meridian Hackathon 2025*  
+*Desenvolvido por Nerex Education*
 
 
 
