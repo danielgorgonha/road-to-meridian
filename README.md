@@ -1,175 +1,212 @@
-# Workshop: Road to Meridian
+# Road to Meridian: Bootcamp Completo
 
 ![Hack Meridian](assets/hack-meridian.png)
 
-## 🎯 About Meridian
-**Meridian** is the largest global Stellar event, combining hackathon + conference. The event will take place on **September 17-18, 2025** at **Copacabana Palace, Rio de Janeiro**.
+## 🎯 Sobre o Meridian
+**Meridian** é o maior evento global da Stellar, combinando hackathon + conferência. O evento acontecerá nos dias **17-18 de setembro de 2025** no **Copacabana Palace, Rio de Janeiro**.
 
 ---
 
-## 📚 Bootcamp Lessons
+## 📚 Estrutura dos Workshops
 
-### [📖 Lesson 1: How to Create and Publish Your First Rust Library](./lesson1/README.md)
-**Content:** Introduction to Rust, environment setup, library creation, testing, and publishing on Crates.io
+### [🔧 Workshop 1: Introdução ao Rust](./workshop1/README.md)
+**Foco:** Fundamentos de Rust e desenvolvimento de aplicações básicas
 
-**Main topics:**
-- ✅ Rust environment installation and setup
-- ✅ Hello World and first steps
-- ✅ Types, functions, and modules
-- ✅ Calculator library creation
-- ✅ Automated testing
-- ✅ Publishing on Crates.io
-- ✅ Interactive program with user input
+#### **Aulas:**
+- **[📖 Aula 1: Criar e Publicar Bibliotecas em Rust](./workshop1/aula1/README.md)**
+  - ✅ Rust environment installation and setup
+  - ✅ Hello World e primeiros passos
+  - ✅ Types, functions, and modules
+  - ✅ Criação de biblioteca calculadora
+  - ✅ Testes automatizados
+  - ✅ Publicação no Crates.io
+  - ✅ Programa interativo com input do usuário
 
-**[📋 View complete Lesson 1 content](./lesson1/README.md)** | **[🎥 Watch Lesson 1 on YouTube](https://www.youtube.com/watch?v=aF98JOeoKV8&ab_channel=NearX)**
+- **[🚀 Aula 2: Criar e Deployar Rest API CRUD em Rust](./workshop1/aula2/README.md)**
+  - 🔄 Operações CRUD (Create, Read, Update, Delete)
+  - 🛠️ Framework web Tide e runtime async-std
+  - 🔒 Gerenciamento de estado concorrente com Arc<Mutex<HashMap>>
+  - 📡 Endpoints REST API e métodos HTTP
+  - 🧪 Testes manuais com cURL
+  - 🚀 Deploy em produção com Railway
 
----
+- **[🌐 Aula 3: Criar e Integrar WebAssembly em Rust](./workshop1/aula3/README.md)**
+  - ⚡ Introdução ao WebAssembly (WASM, WASI, WAT)
+  - 🔧 Compilação e otimização Rust para WASM
+  - 🌐 Runtimes WebAssembly (Wasmi, Wasmtime, Wasmer)
+  - 🚀 Integração com APIs CRUD (CRUDE - Create, Read, Update, Delete, Execute)
+  - 🎯 Aplicações práticas e casos de uso blockchain
 
-### [🚀 Lesson 2: How to Create a CRUD API with Rust in Practice](./lesson2/README.md)
-**Content:** Complete REST API development with Rust
-
-**Main topics:**
-- 🔄 CRUD operations (Create, Read, Update, Delete)
-- 🛠️ Tide web framework and async-std runtime
-- 🔒 Concurrent state management with Arc<Mutex<HashMap>>
-- 📡 REST API endpoints and HTTP methods
-- 🧪 Manual testing with cURL
-- 🚀 Production deployment with Railway
-
-**[📋 View Lesson 2 content](./lesson2/README.md)** | **[🎥 Watch Lesson 2 on YouTube](https://www.youtube.com/watch?v=XozUaYcCQoo&t=2s&ab_channel=NearX)** | **[🚀 Live Demo](https://learn-rust-crud-production.up.railway.app)**
-
----
-
-### [🌐 Lesson 3: How to Transform Rust Code into WebAssembly](./lesson3/README.md)
-**Content:** WebAssembly application development with Rust, integrating WASM modules into CRUD APIs
-
-**Main topics:**
-- ⚡ Introduction to WebAssembly (WASM, WASI, WAT)
-- 🔧 Rust to WASM compilation and optimization
-- 🌐 WebAssembly runtimes (Wasmi, Wasmtime, Wasmer)
-- 🚀 Integration with CRUD APIs (CRUDE - Create, Read, Update, Delete, Execute)
-- 🎯 Practical applications and blockchain use cases
-
-**[📋 View Lesson 3 content](./lesson3/README.md)** | **[🎥 Watch Lesson 3 on YouTube](https://www.youtube.com/watch?v=vcP9JGYUZHo&ab_channel=NearX)**
+**[📋 Ver Workshop 1 completo](./workshop1/README.md)**
 
 ---
 
-## 🏆 Bootcamp Challenges
+### [⭐ Workshop 2: Smartcontracts Básico na Stellar com Soroban](./workshop2/README.md)
+**Foco:** Desenvolvimento de smart contracts na Stellar Network usando Rust e Soroban
 
-### Learning Challenge (Lesson 1) - ✅ COMPLETED
-- ✅ Add a power function and its inverse, logarithm to the **calculator** library in **calc3.rs**
-- ✅ Write tests and publish the new version (0.2.0) on **crates.io**
+#### **Aulas:**
+- **[📖 Aula 1: Básico de Blockchain e Hello World](./workshop2/aula1/README.md)**
+  - 🏗️ Fundamentos da blockchain (4 pilares)
+  - ⭐ Stellar Network em detalhes
+  - 🔧 Smart contracts na Stellar (Soroban)
+  - 🚀 Demonstração prática: Hello World
+  - 🧪 Testes e segurança básica
 
-### Learning Challenge (Lesson 2) - ✅ COMPLETED
-- ✅ **JWT Authentication**: Complete token-based authentication system implemented
-- ✅ **Refresh Tokens**: Automatic token renewal mechanism with secure token lifecycle
-- ✅ **Environment Variables**: Dotenv integration for secure configuration management
-- ✅ **Production Deployment**: Live API deployed on Railway platform
-- ✅ **Postman Collection**: Complete testing documentation with import files
-- ✅ **Automated Testing**: Comprehensive test suite with shell scripts
+- **[🚀 Aula 2: Smartcontracts e Integração com Backend](./workshop2/aula2/README.md)**
+  - 💾 Storage em smart contracts
+  - 🔗 Integração com backend
+  - 🔐 Segurança em integrações
+  - 🏗️ Aplicação full-stack
+  - 🧪 Testes de integração
 
-### Learning Challenge (Lesson 3) - ✅ COMPLETED
-- ✅ **WASM Module Creation**: Created 9 mathematical functions and compiled to WebAssembly
-- ✅ **CRUDE API Integration**: Extended CRUD API with execute functionality
-- ✅ **Dynamic Execution**: Implemented runtime WASM module loading and execution
-- ✅ **Advanced Authentication**: JWT + Refresh tokens + Owner-only access
-- ✅ **Performance Optimization**: Module caching + Rate limiting + Metrics
-- ✅ **Production Deployment**: Live API on Railway with comprehensive testing
-- ✅ **Enterprise Features**: Complete documentation + Postman collection + Automated tests
-- 🔄 **Database Integration**: HashMap with real database (PostgreSQL/SQLite) - *Optional next step*
+- **[🌐 Aula 3: Smartcontracts e Integração com Frontend](./workshop2/aula3/README.md)**
+  - 🌐 Frontend para smart contracts
+  - 🔗 Integração frontend-backend
+  - 👛 Wallet integration
+  - 🎨 Interface de usuário
+  - 🎯 Aplicação completa: Sistema de votação
 
-### Career Challenge
-- 📱 Post on LinkedIn and Twitter with #road2meridian (3/3)
-- ⭐ Tag Stellar
-- 🎓 Tag NearX
+**[📋 Ver Workshop 2 completo](./workshop2/README.md)**
 
 ---
 
-## 🚀 **Senior Developer Expansions**
+### [🔐 Workshop 3: Smartcontracts Avançado na Stellar com Soroban](./workshop3/README.md)
+**Foco:** Tópicos avançados e preparação para o hackathon Meridian
 
-### **🎯 Advanced Implementation Showcase**
+#### **Aulas:**
+- **[📖 Aula 1: Segurança Avançada em Smartcontracts](./workshop3/aula1/README.md)**
+  - 🔒 Vulnerabilidades comuns em smart contracts
+  - 🛡️ Padrões de segurança avançados
+  - 🔍 Técnicas de auditoria
+  - 🧪 Testes de penetração
+  - 📊 Análise estática de código
 
-Based on senior backend development experience, the basic bootcamp concepts were expanded into **production-ready, enterprise-level applications**:
+- **[🚀 Aula 2: Composabilidade entre Contratos](./workshop3/aula2/README.md)**
+  - 🔗 Interação entre contratos
+  - 🏗️ Padrões de composição
+  - 📦 Arquiteturas modulares
+  - 🔄 Callbacks e eventos
+  - 🎯 DeFi patterns
 
-#### **📦 Project Repositories:**
-- **[calculator](https://github.com/danielgorgonha/calculator)** - Advanced math library with power/logarithm functions
-- **[interactive-calculator](https://github.com/danielgorgonha/interactive-calculator)** - Functional interactive application
-- **[learn-rust-crud](https://github.com/danielgorgonha/learn-rust-crud)** - Production-ready CRUD + WASM API
+- **[🔐 Aula 3: Autenticação Passkey e Tópicos Avançados](./workshop3/aula3/README.md)**
+  - 🔑 Autenticação Passkey (FIDO)
+  - ⚡ Otimizações de performance
+  - 🎯 Padrões avançados
+  - 🚀 Deploy em produção
+  - 🔮 Futuro do Soroban
 
-#### **🏆 Key Achievements:**
-- **Security Excellence**: JWT authentication + Refresh tokens + Owner-only access
-- **Performance Optimization**: WASM caching + Rate limiting + Comprehensive metrics
-- **Production Deployment**: Live APIs on Railway with monitoring
-- **Testing Strategy**: Automated test suites with shell scripts
-- **Documentation**: Complete API docs + Postman collections
-- **Enterprise Architecture**: Modular design + Error handling + Logging
-
-#### **💡 Senior Developer Practices Applied:**
-- **Scalability**: From basic concepts to production applications
-- **Security First**: Authentication and authorization systems
-- **Performance Focus**: Caching, monitoring, and optimization
-- **Testing Strategy**: Comprehensive automated testing
-- **Documentation**: Professional and complete documentation
-- **Production Ready**: Deployed, monitored, and maintained
+**[📋 Ver Workshop 3 completo](./workshop3/README.md)**
 
 ---
 
-## 📚 Additional Resources
+## 🏆 Desafios dos Workshops
 
-### **Official Documentation**
-- [📖 The Rust Programming Language Book](https://doc.rust-lang.org/book/) - Official Rust book
-- [🔧 Rust Reference](https://doc.rust-lang.org/reference/) - Complete technical reference
-- [📚 Rust by Example](https://doc.rust-lang.org/rust-by-example/) - Learn Rust with examples
-- [🛠️ Cargo Book](https://doc.rust-lang.org/cargo/) - Cargo documentation
+### Workshop 1 - ✅ COMPLETADO
+- ✅ **Desafio Aula 1**: Adicionar funções power e logarithm à biblioteca calculator
+- ✅ **Desafio Aula 2**: Sistema completo de autenticação JWT + Refresh tokens
+- ✅ **Desafio Aula 3**: API CRUDE com integração WASM + Cache + Rate limiting
 
-### **Tools and IDEs**
-- [🦀 rust-analyzer](https://rust-analyzer.github.io/) - Language server for IDEs
-- [📝 VS Code Rust Extension](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
-- [🐛 Rust Playground](https://play.rust-lang.org/) - Test code online
+### Workshop 2 - 🚧 EM ANDAMENTO
+- 🔄 **Desafio Aula 1**: Reproduzir Hello World e criar variações
+- 🔄 **Desafio Aula 2**: Sistema de votação com storage
+- 🔄 **Desafio Aula 3**: Aplicação full-stack completa
 
-### **Community and Learning**
-- [💬 Rust Discord](https://discord.gg/rust-lang) - Official community
-- [📱 r/rust](https://reddit.com/r/rust) - Rust subreddit
-- [🎯 Rustlings](https://github.com/rust-lang/rustlings) - Interactive exercises
-- [🏆 Rust Quiz](https://dtolnay.github.io/rust-quiz/) - Test your knowledge
+### Workshop 3 - 📅 FUTURO
+- 📋 **Desafio Aula 1**: Sistema de segurança multi-camadas
+- 📋 **Desafio Aula 2**: Plataforma DeFi completa
+- 📋 **Desafio Aula 3**: Aplicação enterprise inovadora
 
-### **Stellar Ecosystem**
-- [⭐ Stellar Documentation](https://developers.stellar.org/) - Official docs
+---
+
+## 🚀 **Expansões de Desenvolvedor Sênior**
+
+### **🎯 Implementações Avançadas**
+
+Baseado em experiência de desenvolvimento backend sênior, os conceitos básicos do bootcamp foram expandidos em **aplicações de nível enterprise prontas para produção**:
+
+#### **📦 Repositórios dos Projetos:**
+- **[calculator](https://github.com/danielgorgonha/calculator)** - Biblioteca matemática avançada com funções power/logarithm
+- **[interactive-calculator](https://github.com/danielgorgonha/interactive-calculator)** - Aplicação interativa funcional
+- **[learn-rust-crud](https://github.com/danielgorgonha/learn-rust-crud)** - API CRUD + WASM pronta para produção
+
+#### **🏆 Principais Conquistas:**
+- **Excelência em Segurança**: Autenticação JWT + Refresh tokens + Acesso owner-only
+- **Otimização de Performance**: Cache WASM + Rate limiting + Métricas abrangentes
+- **Deploy em Produção**: APIs live no Railway com monitoramento
+- **Estratégia de Testes**: Suites de testes automatizados com scripts shell
+- **Documentação**: Docs completas da API + Collections Postman
+- **Arquitetura Enterprise**: Design modular + Tratamento de erros + Logging
+
+#### **💡 Práticas de Desenvolvedor Sênior Aplicadas:**
+- **Escalabilidade**: Dos conceitos básicos às aplicações de produção
+- **Security First**: Sistemas de autenticação e autorização
+- **Performance Focus**: Cache, monitoramento e otimização
+- **Testing Strategy**: Testes automatizados abrangentes
+- **Documentation**: Documentação profissional e completa
+- **Production Ready**: Deployado, monitorado e mantido
+
+---
+
+## 📚 Recursos Adicionais
+
+### **Documentação Oficial**
+- [📖 The Rust Programming Language Book](https://doc.rust-lang.org/book/) - Livro oficial do Rust
+- [🔧 Rust Reference](https://doc.rust-lang.org/reference/) - Referência técnica completa
+- [📚 Rust by Example](https://doc.rust-lang.org/rust-by-example/) - Aprenda Rust com exemplos
+- [🛠️ Cargo Book](https://doc.rust-lang.org/cargo/) - Documentação do Cargo
+
+### **Ecossistema Stellar**
+- [⭐ Stellar Documentation](https://developers.stellar.org/) - Documentação oficial
 - [🔧 Soroban Documentation](https://soroban.stellar.org/) - Smart contracts
-- [💡 Stellar Quest](https://quest.stellar.org/) - Learn Stellar
-- [🌐 Stellar Ecosystem](https://www.stellar.org/ecosystem) - Projects and tools
+- [💡 Stellar Quest](https://quest.stellar.org/) - Aprenda Stellar
+- [🌐 Stellar Ecosystem](https://www.stellar.org/ecosystem) - Projetos e ferramentas
 
-### **Web Development & APIs**
-- [📖 Tide Documentation](https://docs.rs/tide) - Official Tide framework docs
-- [🔧 Serde Documentation](https://serde.rs/) - JSON serialization/deserialization
-- [🌐 Railway Documentation](https://docs.railway.app/) - Cloud deployment platform
-- [📡 REST API Best Practices](https://restfulapi.net/) - API design guidelines
+### **Ferramentas e IDEs**
+- [🦀 rust-analyzer](https://rust-analyzer.github.io/) - Language server para IDEs
+- [📝 VS Code Rust Extension](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+- [🐛 Rust Playground](https://play.rust-lang.org/) - Teste código online
 
-### **Testing & Development Tools**
-- [🧪 Postman](https://www.postman.com/) - API testing and development
-- [📱 Insomnia](https://insomnia.rest/) - Alternative to Postman
-- [🔍 cURL Documentation](https://curl.se/docs/) - Command-line HTTP client
+### **Comunidade e Aprendizado**
+- [💬 Rust Discord](https://discord.gg/rust-lang) - Comunidade oficial
+- [📱 r/rust](https://reddit.com/r/rust) - Subreddit do Rust
+- [🎯 Rustlings](https://github.com/rust-lang/rustlings) - Exercícios interativos
+- [🏆 Rust Quiz](https://dtolnay.github.io/rust-quiz/) - Teste seu conhecimento
 
-### **Videos and Courses**
+### **Desenvolvimento Web e APIs**
+- [📖 Tide Documentation](https://docs.rs/tide) - Documentação oficial do framework Tide
+- [🔧 Serde Documentation](https://serde.rs/) - Serialização/deserialização JSON
+- [🌐 Railway Documentation](https://docs.railway.app/) - Plataforma de deploy na nuvem
+- [📡 REST API Best Practices](https://restfulapi.net/) - Diretrizes de design de API
+
+### **Testes e Ferramentas de Desenvolvimento**
+- [🧪 Postman](https://www.postman.com/) - Testes e desenvolvimento de API
+- [📱 Insomnia](https://insomnia.rest/) - Alternativa ao Postman
+- [🔍 cURL Documentation](https://curl.se/docs/) - Cliente HTTP via linha de comando
+
+### **Vídeos e Cursos**
 - [🎥 Rust Tutorial for Beginners](https://www.youtube.com/watch?v=zF34dRivLOw)
-- [📺 Let's Get Rusty](https://www.youtube.com/c/LetsGetRusty) - Specialized channel
+- [📺 Let's Get Rusty](https://www.youtube.com/c/LetsGetRusty) - Canal especializado
 - [🎓 Rust Crash Course](https://www.youtube.com/watch?v=zF34dRivLOw)
 
 ---
 
-## 📅 Upcoming Lessons
+## 📅 Cronograma dos Workshops
 
-### **Lesson 2 - 24/07**
-**How to Create a CRUD API with Rust in Practice**
-- We'll create a complete CRUD system with Rust
-- **Don't forget:** Live lesson tomorrow, 7pm, on YouTube
-- **Bring your questions!**
+### **Workshop 1 - ✅ COMPLETADO**
+- **Aula 1**: Introdução ao Rust e bibliotecas
+- **Aula 2**: APIs REST com Rust
+- **Aula 3**: WebAssembly e integração
 
-### **Lesson 3 - 25/07**
-**How to Transform Rust Code into WebAssembly**
-- WebAssembly and web applications
-- Final preparation for the hackathon
+### **Workshop 2 - 🚧 EM ANDAMENTO**
+- **Aula 1**: Básico de Blockchain e Hello World ✅
+- **Aula 2**: Smartcontracts e Backend Integration 📅
+- **Aula 3**: Smartcontracts e Frontend Integration 📅
+
+### **Workshop 3 - 📅 FUTURO**
+- **Aula 1**: Segurança Avançada 📅
+- **Aula 2**: Composabilidade entre Contratos 📅
+- **Aula 3**: Autenticação Passkey e Tópicos Avançados 📅
 
 ---
 
-*Developed for Meridian Hackathon 2025 - Rio de Janeiro*
+*Desenvolvido para Meridian Hackathon 2025 - Rio de Janeiro*
