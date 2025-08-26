@@ -16,6 +16,58 @@ Esta aula apresenta os fundamentos da blockchain e smart contracts na Stellar Ne
 
 ---
 
+## 💡 Conselhos do Professor Lucas
+
+### 🎓 Para Aprender (NÃO use IA/Frameworks):
+- ❌ **NÃO use IA** para aprender do zero
+- ❌ **NÃO use frameworks** na primeira vez
+- ❌ **NÃO use autocomplete** quando estiver estudando
+- ✅ **FAÇA na mão** para entender os fundamentos
+- ✅ **ESCREVA código** com caneta e papel (melhor fixação)
+- ✅ **CONSTRUA** servidores do zero uma vez na vida
+- ✅ **USE bibliotecas nativas** da linguagem
+
+### ⚡ Para Trabalhar (USE IA/Frameworks):
+- ✅ **USE IA** para produtividade
+- ✅ **USE frameworks** para eficiência
+- ✅ **USE autocomplete** para velocidade
+- ✅ **USE ferramentas** para otimização
+
+### 🧠 Por que Escrever com Caneta?
+Quando você escreve código com caneta, as sinapses no cérebro são diferentes. Cada letra tem uma forma única, criando conexões mais fortes na memória comparado ao teclado onde todos os botões são iguais.
+
+---
+
+## ❓ Perguntas Frequentes (FAQ)
+
+### **"Como bancos e governos não conseguem ter acesso às transações?"**
+**Resposta**: As transações são **públicas e visíveis** para todos, mas os governos não conseguem **bloquear** contas porque isso exigiria parar toda a blockchain. Se um nó parar, a rede continua funcionando em outros nós.
+
+### **"É ideal usar Stellar para grandes transações?"**
+**Resposta**: Depende do contexto:
+- ✅ **SIM** para pagamentos globais (é o foco da Stellar)
+- ✅ **SIM** para microtransações (taxas baixas)
+- ❌ **NÃO** para jogos com alta frequência (limite de ~15 TPS)
+- ❌ **NÃO** para aplicações que precisam de milhares de transações por segundo
+
+### **"Existe rede teste da Stellar na MetaMask?"**
+**Resposta**: **NÃO**. A Stellar usa curva elíptica **ED25519** diferente da **SECP256K1** do Ethereum. Use carteiras nativas:
+- **Freighter** (extensão de navegador - ideal para desenvolvimento)
+- **Lobstr** (aplicativo mobile)
+
+### **"Se uma função fizesse operação matemática, geraria custos?"**
+**Resposta**: **NÃO**. Operações matemáticas puras não geram custos. Custos só são gerados quando você **grava dados** na blockchain (storage).
+
+### **"Como um nó se torna altamente confiável?"**
+**Resposta**: Através de:
+- **Maior número de conexões** com outros nós
+- **Maior poder de processamento**
+- **Menor latência**
+- **Mais tokens** (em alguns casos)
+- **Histórico de confiabilidade**
+
+---
+
 ## 🏗️ Fundamentos da Blockchain
 
 ### Os 4 Pilares Fundamentais
@@ -1313,7 +1365,80 @@ stellar contract deploy --wasm target/wasm32-unknown-unknown/release/hello_word_
 # Invocar função hello
 stellar contract invoke --id <contract_id> --source Bob -- hello message "Lucas"
 # Retorna: "Hello Lucas"
+
+# Testar com outras mensagens
+stellar contract invoke --id <contract_id> --source Bob -- hello message "World"
+# Retorna: "Hello World"
+
+stellar contract invoke --id <contract_id> --source Bob -- hello message "Meridian"
+# Retorna: "Hello Meridian"
 ```
+
+### 8. Verificação no Stellar Expert
+
+```bash
+# Acessar o explorador da testnet
+# https://testnet.stellar.expert/
+
+# Procurar pela conta Bob
+# Verificar transações de deploy e invoke
+# Verificar saldo da conta
+```
+
+### 9. Análise de Custos
+
+```bash
+# Cálculo de custos do deploy:
+# Taxa base: 100 stroops
+# Custo por byte: 1 stroop
+# Contrato original: 100 + 574 = 674 stroops
+# Contrato otimizado: 100 + 534 = 634 stroops
+# Economia: 40 stroops = 0.00004 XLM
+
+# Custo de execução (hello):
+# Apenas taxa base: 100 stroops = 0.0001 XLM
+# (Operações matemáticas não geram custo adicional)
+```
+
+### 10. Resultados da Demonstração
+
+**✅ Sucesso:**
+- Contrato compilado e otimizado
+- Deploy realizado na testnet
+- Função hello executada com sucesso
+- Custos mínimos (apenas taxa base)
+
+**📊 Métricas:**
+- Tamanho original: 574 bytes
+- Tamanho otimizado: 534 bytes
+- Redução: 7% do tamanho
+- Tempo de deploy: ~5 segundos
+- Tempo de execução: ~2 segundos
+
+---
+
+## 🏆 Desafios da Aula
+
+### 🎯 Desafio 1: Hello World Expandido
+**Status**: ✅ Já feito no Workshop 1
+- Replicar o Hello World básico
+- Adicionar operações matemáticas
+- Testar diferentes tipos de mensagens
+
+### 🎯 Desafio 2: Contador Simples  
+**Status**: ✅ Já feito no Workshop 1
+- Criar contrato com contador
+- Implementar incremento/decremento
+- Adicionar validações básicas
+
+### 🎯 Desafio 3: Sistema de Votação
+**Status**: 🚧 **EM ANDAMENTO**
+
+- ✅ Múltiplas opções de voto
+- ✅ Contagem de votos por opção  
+- ✅ Validação de votantes (cada endereço vota apenas uma vez)
+- ✅ Lista de opções configurável
+- 📋 **[Ver especificações detalhadas](./voting-system/README.md)**
 
 ---
 
@@ -2191,14 +2316,22 @@ Chaves    Operações   Assinaturas   SCP      Blocos    Imutável
 ### 🚀 **Próximos Passos**
 
 #### **Workshop 2 - Aula 2:**
-- Integração com frontend
-- Storage de dados em contratos
-- Padrões avançados de desenvolvimento
+- 🌐 **Integração com Frontend**: Criar interface web para interagir com smart contracts
+- 💾 **Storage de Dados**: Aprender a armazenar e recuperar dados nos contratos
+- 🎮 **Sistema de Votação Completo**: Finalizar o desafio 3 com frontend integrado
+- 🔗 **Padrões de Desenvolvimento**: Melhores práticas para smart contracts
+
+#### **Workshop 2 - Aula 3:**
+- 🔄 **Integração Backend**: Conectar smart contracts com APIs
+- 🏗️ **Aplicação Full-Stack**: Sistema completo de votação
+- 🧪 **Testes de Integração**: Testar toda a aplicação
+- 🚀 **Deploy em Produção**: Preparar para o hackathon
 
 #### **Workshop 3:**
-- Segurança em smart contracts
-- Composabilidade entre contratos
-- Autenticação Passkey (FIDO)
+- 🔒 **Segurança Avançada**: Vulnerabilidades e proteções
+- 🔗 **Composabilidade**: Interação entre contratos
+- 🔑 **Autenticação Passkey**: FIDO e autenticação moderna
+- 🎯 **Preparação Final**: Pronto para o Meridian Hackathon
 
 ### 💡 **Dicas de Aprendizado**
 
@@ -2213,6 +2346,26 @@ Chaves    Operações   Assinaturas   SCP      Blocos    Imutável
 - ⭐ Participar da comunidade
 - 🔗 Conectar com outros desenvolvedores
 - 📚 Manter-se atualizado
+
+### 🚀 **Desafios de Carreira**
+
+#### **Desafio 1: Compartilhar no LinkedIn**
+- ✅ Dar like no vídeo da aula
+- ✅ Postar sobre o aprendizado
+- ✅ Marcar @Stellar e @NearX
+- ✅ Usar hashtags: #blockchain #rust #stellar #meridian
+
+#### **Desafio 2: Participar da Comunidade**
+- ✅ Entrar na comunidade Meridian
+- ✅ Postar foto da mesa de trabalho
+- ✅ Encorajar outros participantes
+- ✅ Compartilhar progresso
+
+#### **Desafio 3: Networking**
+- ✅ Conectar com outros desenvolvedores
+- ✅ Participar de grupos de estudo
+- ✅ Compartilhar dúvidas e soluções
+- ✅ Preparar para o hackathon
 
 ---
 
