@@ -1,680 +1,400 @@
 # Workshop 2: Smartcontracts Básico na Stellar com Soroban
 
-## Aula 3: Smartcontracts e Integração com Frontend
+## Aula 3: Stellar SDK Python - Demonstração Prática
 
-### 📚 Resumo da Aula
+### 📚 O que aprendemos nesta aula
 
-Esta aula completa o Workshop 2 focando na integração de smart contracts com interfaces de usuário, criando aplicações web completas que interagem com a blockchain Stellar.
+Nesta aula, aprendemos como usar o **Stellar SDK em Python** para interagir com smart contracts. Foi uma **demonstração prática** para mostrar como a mesma funcionalidade pode ser implementada em diferentes linguagens. O projeto **Tap Game** continua sendo descentralizado, com frontend conectando diretamente ao smart contract.
 
-### 🎯 Objetivos da Aula
+### 🎯 Principais conceitos aprendidos
 
-- ✅ Criar interfaces de usuário para smart contracts
-- ✅ Integrar frontend com Stellar Network
-- ✅ Desenvolver aplicações web completas
-- ✅ Implementar wallets e autenticação
-- ✅ Deploy de aplicações full-stack
-
----
-
-## 🌐 Frontend para Smart Contracts
-
-### Arquitetura Frontend
-
-```
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│   React     │───▶│   API       │───▶│   Stellar   │
-│   App       │    │  Backend    │    │  Network    │
-└─────────────┘    └─────────────┘    └─────────────┘
-       │                   │
-       ▼                   ▼
-┌─────────────┐    ┌─────────────┐
-│   Wallet    │    │   Cache     │
-│  Connect    │    │  Layer      │
-└─────────────┘    └─────────────┘
-```
-
-### Tecnologias Frontend
-
-#### **React + TypeScript**
-- **Vantagens**: Componentização, tipagem forte, ecossistema rico
-- **Integração**: Hooks para interação com blockchain
-- **Estado**: Context API para gerenciar wallet e contratos
-
-#### **Stellar SDK**
-- **Função**: Cliente JavaScript para Stellar
-- **Recursos**: Criação de transações, assinatura, envio
-- **Integração**: Hooks customizados
+- ✅ **Stellar SDK Python**: Como usar a biblioteca oficial
+- ✅ **Criação de Chaves**: Gerar e gerenciar carteiras
+- ✅ **Transações**: Criar contas, fazer pagamentos
+- ✅ **Smart Contracts**: Interagir com contratos via Python
+- ✅ **Multi-linguagem**: Como implementar em diferentes tecnologias
 
 ---
 
-## 🔗 Integração Frontend-Backend
+## 🏗️ Arquitetura do Projeto
 
-### Padrões de Comunicação
+### Estrutura Real (Descentralizada)
 
-#### **1. REST API Pattern**
-```typescript
-// api/stellar.ts
-export class StellarAPI {
-  private baseURL: string;
-  
-  constructor(baseURL: string) {
-    this.baseURL = baseURL;
-  }
-  
-  async invokeContract(contractId: string, function: string, args: any[]) {
-    const response = await fetch(`${this.baseURL}/contract/invoke`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contractId,
-        function,
-        args,
-      }),
-    });
-    
-    return response.json();
-  }
-}
+```
+Tap Game (Projeto Final)
+├── web3/           # Smart Contract (Rust)
+├── frontend/       # Interface React (Aula 2)
+│                   # └── Conecta DIRETAMENTE ao smart contract
+└── backend/        # Demonstração Python (Aula 3)
+                    # └── Exemplo de como usar Stellar SDK
 ```
 
-#### **2. WebSocket Pattern**
-```typescript
-// hooks/useStellarWebSocket.ts
-import { useEffect, useState } from 'react';
+### Fluxo Real
 
-export function useStellarWebSocket(contractId: string) {
-  const [events, setEvents] = useState([]);
-  
-  useEffect(() => {
-    const ws = new WebSocket(`ws://localhost:8080/contract/${contractId}`);
-    
-    ws.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      setEvents(prev => [...prev, data]);
-    };
-    
-    return () => ws.close();
-  }, [contractId]);
-  
-  return events;
-}
 ```
+Frontend React (Aula 2)
+    ↓ (conexão direta)
+Smart Contract (Rust)
+    ↓ (demonstração)
+Backend Python (Aula 3)
+```
+
+**Importante**: O frontend da Aula 2 é **descentralizado** e não depende do backend Python.
 
 ---
 
-## 👛 Wallet Integration
+## 🐍 Stellar SDK Python
 
-### Stellar Wallet Adapter
-
-```typescript
-// hooks/useWallet.ts
-import { useState, useEffect } from 'react';
-import { StellarSdk } from 'stellar-sdk';
-
-export function useWallet() {
-  const [wallet, setWallet] = useState(null);
-  const [publicKey, setPublicKey] = useState(null);
-  const [connected, setConnected] = useState(false);
-  
-  const connect = async () => {
-    try {
-      // Detectar wallet disponível
-      if (window.freighter) {
-        const freighter = window.freighter;
-        await freighter.enable();
-        const publicKey = await freighter.getPublicKey();
-        
-        setWallet(freighter);
-        setPublicKey(publicKey);
-        setConnected(true);
-      }
-    } catch (error) {
-      console.error('Failed to connect wallet:', error);
-    }
-  };
-  
-  const disconnect = () => {
-    setWallet(null);
-    setPublicKey(null);
-    setConnected(false);
-  };
-  
-  const signTransaction = async (transaction: any) => {
-    if (!wallet) throw new Error('Wallet not connected');
-    return await wallet.signTransaction(transaction);
-  };
-  
-  return {
-    wallet,
-    publicKey,
-    connected,
-    connect,
-    disconnect,
-    signTransaction,
-  };
-}
-```
-
-### Componente de Conexão
-
-```typescript
-// components/WalletConnect.tsx
-import React from 'react';
-import { useWallet } from '../hooks/useWallet';
-
-export function WalletConnect() {
-  const { connected, publicKey, connect, disconnect } = useWallet();
-  
-  return (
-    <div className="wallet-connect">
-      {connected ? (
-        <div>
-          <span>Connected: {publicKey?.slice(0, 8)}...</span>
-          <button onClick={disconnect}>Disconnect</button>
-        </div>
-      ) : (
-        <button onClick={connect}>Connect Wallet</button>
-      )}
-    </div>
-  );
-}
-```
-
----
-
-## 🎨 Interface de Usuário
-
-### Componente de Smart Contract
-
-```typescript
-// components/SmartContractInterface.tsx
-import React, { useState } from 'react';
-import { useWallet } from '../hooks/useWallet';
-import { StellarAPI } from '../api/stellar';
-
-interface SmartContractInterfaceProps {
-  contractId: string;
-  functions: string[];
-}
-
-export function SmartContractInterface({ contractId, functions }: SmartContractInterfaceProps) {
-  const { connected, publicKey, signTransaction } = useWallet();
-  const [selectedFunction, setSelectedFunction] = useState('');
-  const [args, setArgs] = useState('');
-  const [result, setResult] = useState('');
-  const [loading, setLoading] = useState(false);
-  
-  const api = new StellarAPI('http://localhost:8080');
-  
-  const invokeFunction = async () => {
-    if (!connected) {
-      alert('Please connect your wallet first');
-      return;
-    }
-    
-    setLoading(true);
-    try {
-      const parsedArgs = JSON.parse(args);
-      const response = await api.invokeContract(contractId, selectedFunction, parsedArgs);
-      setResult(JSON.stringify(response, null, 2));
-    } catch (error) {
-      setResult(`Error: ${error.message}`);
-    } finally {
-      setLoading(false);
-    }
-  };
-  
-  return (
-    <div className="smart-contract-interface">
-      <h3>Smart Contract: {contractId}</h3>
-      
-      <div className="function-selector">
-        <label>Function:</label>
-        <select value={selectedFunction} onChange={(e) => setSelectedFunction(e.target.value)}>
-          <option value="">Select a function</option>
-          {functions.map(func => (
-            <option key={func} value={func}>{func}</option>
-          ))}
-        </select>
-      </div>
-      
-      <div className="args-input">
-        <label>Arguments (JSON):</label>
-        <textarea
-          value={args}
-          onChange={(e) => setArgs(e.target.value)}
-          placeholder='["arg1", "arg2"]'
-        />
-      </div>
-      
-      <button 
-        onClick={invokeFunction} 
-        disabled={!connected || !selectedFunction || loading}
-      >
-        {loading ? 'Executing...' : 'Invoke Function'}
-      </button>
-      
-      {result && (
-        <div className="result">
-          <h4>Result:</h4>
-          <pre>{result}</pre>
-        </div>
-      )}
-    </div>
-  );
-}
-```
-
----
-
-## 🎯 Aplicação Completa: Sistema de Votação
-
-### Smart Contract de Votação
-
-```rust
-#![no_std]
-use soroban_sdk::{contractimpl, contracttype, Env, Symbol, Address, Vec, String};
-
-#[contracttype]
-#[derive(Clone, Debug, Eq, PartialEq)]
-pub struct Poll {
-    pub id: String,
-    pub question: String,
-    pub options: Vec<String>,
-    pub votes: Vec<u32>,
-    pub voters: Vec<Address>,
-    pub active: bool,
-}
-
-pub struct VotingContract;
-
-#[contractimpl]
-impl VotingContract {
-    pub fn create_poll(env: Env, creator: Address, question: String, options: Vec<String>) -> String {
-        let poll_id = format!("poll_{}", env.ledger().timestamp());
-        
-        let votes = Vec::new(&env);
-        for _ in 0..options.len() {
-            votes.push_back(0);
-        }
-        
-        let voters = Vec::new(&env);
-        
-        let poll = Poll {
-            id: poll_id.clone(),
-            question,
-            options,
-            votes,
-            voters,
-            active: true,
-        };
-        
-        env.storage().set(&poll_id, &poll);
-        poll_id
-    }
-    
-    pub fn vote(env: Env, voter: Address, poll_id: String, option_index: u32) -> bool {
-        let mut poll: Poll = env.storage().get(&poll_id).unwrap();
-        
-        // Verificar se já votou
-        for voter_addr in poll.voters.iter() {
-            if voter_addr == voter {
-                return false; // Já votou
-            }
-        }
-        
-        // Adicionar voto
-        let mut new_votes = Vec::new(&env);
-        for (i, vote_count) in poll.votes.iter().enumerate() {
-            if i == option_index as usize {
-                new_votes.push_back(vote_count + 1);
-            } else {
-                new_votes.push_back(vote_count);
-            }
-        }
-        
-        poll.votes = new_votes;
-        poll.voters.push_back(voter);
-        
-        env.storage().set(&poll_id, &poll);
-        true
-    }
-    
-    pub fn get_poll(env: Env, poll_id: String) -> Poll {
-        env.storage().get(&poll_id).unwrap()
-    }
-    
-    pub fn get_polls(env: Env) -> Vec<String> {
-        // Implementar listagem de polls
-        Vec::new(&env)
-    }
-}
-```
-
-### Frontend para Sistema de Votação
-
-```typescript
-// components/VotingSystem.tsx
-import React, { useState, useEffect } from 'react';
-import { useWallet } from '../hooks/useWallet';
-import { StellarAPI } from '../api/stellar';
-
-export function VotingSystem() {
-  const { connected, publicKey } = useWallet();
-  const [polls, setPolls] = useState([]);
-  const [newPoll, setNewPoll] = useState({ question: '', options: ['', ''] });
-  const [loading, setLoading] = useState(false);
-  
-  const api = new StellarAPI('http://localhost:8080');
-  
-  const createPoll = async () => {
-    if (!connected) return;
-    
-    setLoading(true);
-    try {
-      const options = newPoll.options.filter(opt => opt.trim() !== '');
-      await api.invokeContract('VOTING_CONTRACT_ID', 'create_poll', [
-        publicKey,
-        newPoll.question,
-        options
-      ]);
-      
-      setNewPoll({ question: '', options: ['', ''] });
-      loadPolls();
-    } catch (error) {
-      console.error('Failed to create poll:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  
-  const vote = async (pollId: string, optionIndex: number) => {
-    if (!connected) return;
-    
-    try {
-      await api.invokeContract('VOTING_CONTRACT_ID', 'vote', [
-        publicKey,
-        pollId,
-        optionIndex
-      ]);
-      
-      loadPolls();
-    } catch (error) {
-      console.error('Failed to vote:', error);
-    }
-  };
-  
-  const loadPolls = async () => {
-    try {
-      const pollsData = await api.invokeContract('VOTING_CONTRACT_ID', 'get_polls', []);
-      setPolls(pollsData);
-    } catch (error) {
-      console.error('Failed to load polls:', error);
-    }
-  };
-  
-  useEffect(() => {
-    loadPolls();
-  }, []);
-  
-  return (
-    <div className="voting-system">
-      <h2>Voting System</h2>
-      
-      {connected && (
-        <div className="create-poll">
-          <h3>Create New Poll</h3>
-          <input
-            type="text"
-            placeholder="Question"
-            value={newPoll.question}
-            onChange={(e) => setNewPoll({ ...newPoll, question: e.target.value })}
-          />
-          
-          {newPoll.options.map((option, index) => (
-            <input
-              key={index}
-              type="text"
-              placeholder={`Option ${index + 1}`}
-              value={option}
-              onChange={(e) => {
-                const newOptions = [...newPoll.options];
-                newOptions[index] = e.target.value;
-                setNewPoll({ ...newPoll, options: newOptions });
-              }}
-            />
-          ))}
-          
-          <button onClick={() => setNewPoll({ ...newPoll, options: [...newPoll.options, ''] })}>
-            Add Option
-          </button>
-          
-          <button onClick={createPoll} disabled={loading}>
-            {loading ? 'Creating...' : 'Create Poll'}
-          </button>
-        </div>
-      )}
-      
-      <div className="polls-list">
-        <h3>Active Polls</h3>
-        {polls.map((poll: any) => (
-          <div key={poll.id} className="poll">
-            <h4>{poll.question}</h4>
-            {poll.options.map((option: string, index: number) => (
-              <div key={index} className="poll-option">
-                <span>{option}</span>
-                <span>Votes: {poll.votes[index]}</span>
-                {connected && (
-                  <button onClick={() => vote(poll.id, index)}>
-                    Vote
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-```
-
----
-
-## 🎨 Styling e UX
-
-### CSS Modules
-
-```css
-/* VotingSystem.module.css */
-.votingSystem {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.createPoll {
-  background: #f5f5f5;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.createPoll input {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.poll {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 8px;
-}
-
-.pollOption {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  margin: 5px 0;
-  background: #f9f9f9;
-  border-radius: 4px;
-}
-
-.button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-```
-
----
-
-## 🚀 Deploy e Produção
-
-### Build e Deploy Frontend
+### Instalação
 
 ```bash
-# Build da aplicação React
-npm run build
+# Criar ambiente virtual
+python -m venv env
+source env/bin/activate  # Linux/Mac
+# ou
+env\Scripts\activate     # Windows
 
-# Deploy no Vercel
-vercel --prod
-
-# Ou deploy no Netlify
-netlify deploy --prod --dir=build
+# Instalar biblioteca
+pip install stellar-sdk
 ```
 
-### Configuração de Ambiente
+### Importação básica
 
-```typescript
-// config/environment.ts
-export const config = {
-  development: {
-    apiUrl: 'http://localhost:8080',
-    network: 'testnet',
-    contractId: 'TEST_CONTRACT_ID',
-  },
-  production: {
-    apiUrl: 'https://api.yourapp.com',
-    network: 'public',
-    contractId: 'PROD_CONTRACT_ID',
-  },
-};
-
-export const currentConfig = config[process.env.NODE_ENV || 'development'];
-```
-
-### Docker Compose para Full-Stack
-
-```yaml
-# docker-compose.yml
-version: '3.8'
-services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:3000"
-    environment:
-      - REACT_APP_API_URL=http://backend:8080
-    depends_on:
-      - backend
-  
-  backend:
-    build: ./backend
-    ports:
-      - "8080:8080"
-    environment:
-      - STELLAR_NETWORK=testnet
-      - CONTRACT_ID=${CONTRACT_ID}
-    volumes:
-      - ./backend:/app
+```python
+from stellar_sdk import Keypair, Server, TransactionBuilder, Network
+from stellar_sdk.operation.payment import Payment
+from stellar_sdk.operation.create_account import CreateAccount
 ```
 
 ---
 
-## 🧪 Testes Frontend
+## 🔑 Criação de Chaves
 
-### Testes de Componentes
+### Gerar chave aleatória
 
-```typescript
-// __tests__/VotingSystem.test.tsx
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { VotingSystem } from '../components/VotingSystem';
+```python
+# Gerar chave aleatória
+keypair = Keypair.random()
+print(f"Public Key: {keypair.public_key}")
+print(f"Secret Key: {keypair.secret}")
 
-// Mock do hook useWallet
-jest.mock('../hooks/useWallet', () => ({
-  useWallet: () => ({
-    connected: true,
-    publicKey: 'G...',
-    connect: jest.fn(),
-    disconnect: jest.fn(),
-  }),
-}));
-
-test('renders voting system', () => {
-  render(<VotingSystem />);
-  expect(screen.getByText('Voting System')).toBeInTheDocument();
-});
-
-test('creates new poll', async () => {
-  render(<VotingSystem />);
-  
-  const questionInput = screen.getByPlaceholderText('Question');
-  fireEvent.change(questionInput, { target: { value: 'Test question?' } });
-  
-  const createButton = screen.getByText('Create Poll');
-  fireEvent.click(createButton);
-  
-  // Verificar se o poll foi criado
-  expect(await screen.findByText('Test question?')).toBeInTheDocument();
-});
+# Chaves começam com:
+# - Secret: S (32 bytes)
+# - Public: G
+# - Contrato: C
 ```
+
+### Gerar chave a partir de seed
+
+```python
+# Mais seguro - usar seed específica
+import os
+seed = os.urandom(32)  # 32 bytes aleatórios
+keypair = Keypair.from_raw_ed25519_seed(seed)
+```
+
+---
+
+## 🏦 Criação de Contas
+
+### Método 1: Friendbot (Testnet)
+
+```python
+import requests
+
+def create_account_friendbot(public_key):
+    """Criar conta usando Friendbot da Stellar"""
+    url = f"https://friendbot.stellar.org/?addr={public_key}"
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        print(f"Conta criada! Recebeu 10.000 XLM")
+        return True
+    else:
+        print("Erro ao criar conta")
+        return False
+
+# Uso
+keypair = Keypair.random()
+create_account_friendbot(keypair.public_key)
+```
+
+### Método 2: Criação manual
+
+```python
+def create_account_manual(source_keypair, destination_public_key, amount=100):
+    """Criar conta manualmente via transação"""
+    server = Server("https://horizon-testnet.stellar.org")
+    
+    # Carregar conta fonte
+    source_account = server.load_account(source_keypair.public_key)
+    
+    # Criar transação
+    transaction = TransactionBuilder(
+        source_account=source_account,
+        network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE,
+        base_fee=100
+    ).append_create_account_op(
+        destination=destination_public_key,
+        starting_balance=str(amount)
+    ).set_timeout(30).build()
+    
+    # Assinar e enviar
+    transaction.sign(source_keypair)
+    response = server.submit_transaction(transaction)
+    
+    print(f"Conta criada! Hash: {response['hash']}")
+    return response
+```
+
+---
+
+## 💰 Pagamentos
+
+### Pagamento simples
+
+```python
+def send_payment(source_keypair, destination_public_key, amount):
+    """Enviar pagamento XLM"""
+    server = Server("https://horizon-testnet.stellar.org")
+    
+    # Carregar conta fonte
+    source_account = server.load_account(source_keypair.public_key)
+    
+    # Criar transação de pagamento
+    transaction = TransactionBuilder(
+        source_account=source_account,
+        network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE,
+        base_fee=100
+    ).append_payment_op(
+        destination=destination_public_key,
+        asset=Asset.native(),
+        amount=str(amount)
+    ).set_timeout(30).build()
+    
+    # Assinar e enviar
+    transaction.sign(source_keypair)
+    response = server.submit_transaction(transaction)
+    
+    print(f"Pagamento enviado! Hash: {response['hash']}")
+    return response
+```
+
+### Múltiplos pagamentos
+
+```python
+def send_multiple_payments(source_keypair, payments):
+    """Enviar múltiplos pagamentos em uma transação"""
+    server = Server("https://horizon-testnet.stellar.org")
+    source_account = server.load_account(source_keypair.public_key)
+    
+    transaction = TransactionBuilder(
+        source_account=source_account,
+        network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE,
+        base_fee=100
+    )
+    
+    # Adicionar múltiplas operações
+    for payment in payments:
+        transaction.append_payment_op(
+            destination=payment['destination'],
+            asset=Asset.native(),
+            amount=str(payment['amount'])
+        )
+    
+    transaction.set_timeout(30).build()
+    transaction.sign(source_keypair)
+    
+    response = server.submit_transaction(transaction)
+    print(f"Múltiplos pagamentos enviados! Hash: {response['hash']}")
+    return response
+```
+
+---
+
+## 🤖 Smart Contract Integration
+
+### Ler dados do contrato
+
+```python
+def read_contract(contract_id, function_name):
+    """Ler dados de um smart contract"""
+    server = Server("https://horizon-testnet.stellar.org")
+    
+    # Criar transação de leitura
+    transaction = TransactionBuilder(
+        source_account=source_account,
+        network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE,
+        base_fee=100
+    ).append_invoke_host_function_op(
+        contract_id=contract_id,
+        function_name=function_name,
+        function_args=[]
+    ).set_timeout(30).build()
+    
+    # Para leitura, não precisa assinar
+    response = server.submit_transaction(transaction)
+    return response
+```
+
+### Escrever no contrato
+
+```python
+def write_contract(contract_id, function_name, args):
+    """Escrever dados em um smart contract"""
+    server = Server("https://horizon-testnet.stellar.org")
+    
+    # Codificar argumentos em XDR
+    from stellar_sdk import xdr
+    
+    encoded_args = []
+    for arg in args:
+        if isinstance(arg, int):
+            encoded_args.append(xdr.SCVal.from_i32(arg))
+        elif isinstance(arg, str):
+            encoded_args.append(xdr.SCVal.from_string(arg))
+        elif isinstance(arg, bytes):
+            encoded_args.append(xdr.SCVal.from_address(arg))
+    
+    # Criar transação
+    transaction = TransactionBuilder(
+        source_account=source_account,
+        network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE,
+        base_fee=100
+    ).append_invoke_host_function_op(
+        contract_id=contract_id,
+        function_name=function_name,
+        function_args=encoded_args
+    ).set_timeout(30).build()
+    
+    # Assinar e enviar
+    transaction.sign(source_keypair)
+    response = server.submit_transaction(transaction)
+    return response
+```
+
+---
+
+## 🎮 Exemplo: Tap Game Integration
+
+### Salvar pontuação no jogo
+
+```python
+def save_game_score(contract_id, player_address, score, nickname, game_time):
+    """Salvar pontuação no Tap Game (demonstração)"""
+    args = [
+        player_address,  # Address
+        score,           # u32
+        nickname,        # String
+        game_time        # u32
+    ]
+    
+    return write_contract(contract_id, "new_game", args)
+```
+
+### Obter ranking
+
+```python
+def get_game_ranking(contract_id):
+    """Obter ranking do Tap Game (demonstração)"""
+    return read_contract(contract_id, "get_ranking")
+```
+
+---
+
+## 🐛 Debugging e Dicas
+
+### Dicas para Hackathon
+
+```python
+# 1. Sempre simular antes de enviar
+def simulate_transaction(transaction):
+    server = Server("https://horizon-testnet.stellar.org")
+    try:
+        simulation = server.simulate_transaction(transaction)
+        print("Simulação bem-sucedida!")
+        return True
+    except Exception as e:
+        print(f"Erro na simulação: {e}")
+        return False
+
+# 2. Aumentar taxa em momentos de congestionamento
+def high_fee_transaction():
+    # Usar taxa mais alta durante hackathon
+    base_fee = 1000  # Em vez de 100
+```
+
+### Resolver erros
+
+```python
+# Usar Discord da Stellar para decodificar erros XDR
+def decode_error(error_xdr):
+    """
+    Copiar erro XDR e colar no Discord da Stellar:
+    https://discord.gg/stellar
+    """
+    print(f"Erro XDR: {error_xdr}")
+    print("Cole no Discord da Stellar para decodificar")
+```
+
+---
+
+## 📁 Estrutura do Projeto
+
+O projeto completo está em: [nearx-tap-game](https://github.com/danielgorgonha/nearx-tap-game)
+
+```
+nearx-tap-game/
+├── web3/           # Smart Contract (Rust)
+├── frontend/       # Interface React (Aula 2)
+│                   # └── Descentralizado - conecta direto ao contrato
+└── backend/        # Demonstração Python (Aula 3)
+    ├── main.py     # Exemplos de uso do Stellar SDK
+    └── requirements.txt
+```
+
+---
+
+## 🎯 Resumo do Workshop 2
+
+### Aula 1: Fundamentos
+- ✅ Blockchain e Stellar Network
+- ✅ Smart Contracts básicos
+- ✅ Hello World na prática
+
+### Aula 2: Frontend Descentralizado
+- ✅ Tap Game - Smart Contract
+- ✅ Frontend React conectando diretamente
+- ✅ Sistema descentralizado completo
+
+### Aula 3: Multi-linguagem (Python)
+- ✅ Stellar SDK em Python
+- ✅ Demonstração de outras linguagens
+- ✅ Mesma funcionalidade, tecnologia diferente
 
 ---
 
 ## 🎯 Próximos Passos
 
-### Workshop 3 (Futuro)
-- Segurança avançada em smart contracts
-- Composabilidade entre contratos
-- Autenticação Passkey (FIDO)
-- Otimizações de performance
+### Workshop 3 (Próximo)
+- **Segurança avançada** em smart contracts
+- **Composabilidade** entre contratos
+- **Autenticação Passkey** (FIDO)
 
 ### Desafios Práticos
-- ✅ Implementar sistema de NFTs
-- ✅ Criar DEX simples
-- ✅ Adicionar gráficos de votação
-- ✅ Implementar notificações em tempo real
+- ✅ Implementar Tap Game completo
+- ✅ Testar com diferentes linguagens
+- ✅ Criar variações do jogo
+- ✅ Explorar outras funcionalidades
 
 ---
 
-## 📚 Recursos Adicionais
+## 📚 Recursos
 
-### Documentação
-- [Stellar JavaScript SDK](https://stellar.github.io/js-stellar-sdk/)
-- [React Documentation](https://reactjs.org/)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-
-### Ferramentas
-- [Stellar Laboratory](https://laboratory.stellar.org/)
-- [Freighter Wallet](https://www.freighter.app/)
-- [Vercel](https://vercel.com/) / [Netlify](https://netlify.com/)
+- **Repositório**: [nearx-tap-game](https://github.com/danielgorgonha/nearx-tap-game)
+- **Stellar SDK Python**: [stellar-sdk](https://github.com/StellarCN/py-stellar-sdk)
+- **Documentação**: [stellar.org/developers](https://stellar.org/developers)
+- **Discord Stellar**: [discord.gg/stellar](https://discord.gg/stellar)
 
 ---
 

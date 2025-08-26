@@ -1,395 +1,136 @@
 # Workshop 2: Smartcontracts Básico na Stellar com Soroban
 
-## Aula 2: Smartcontracts e Integração com Backend
+## Aula 2: Smart Contract + Frontend Descentralizado (Tap Game)
 
-### 📚 Resumo da Aula
+### 📚 O que aprendemos nesta aula
 
-Esta aula foca na integração de smart contracts com sistemas backend, explorando como armazenar dados no contrato e criar aplicações que interagem com a blockchain Stellar.
+Nesta aula, aprendemos como criar um **jogo descentralizado na blockchain** com frontend conectando diretamente ao smart contract. O resultado foi o projeto **Tap Game** que está disponível no repositório: [nearx-tap-game](https://github.com/danielgorgonha/nearx-tap-game)
 
-### 🎯 Objetivos da Aula
+### 🎯 Principais conceitos aprendidos
 
-- ✅ Entender storage em smart contracts
-- ✅ Criar contratos com estado persistente
-- ✅ Integrar smart contracts com APIs backend
-- ✅ Desenvolver aplicações full-stack com Stellar
-- ✅ Implementar padrões de segurança
+- ✅ **Storage na Stellar**: Como armazenar dados no smart contract
+- ✅ **Smart Contract**: Estrutura do jogo Tap Game
+- ✅ **Frontend Descentralizado**: Interface React conectando diretamente
+- ✅ **Sistema Completo**: Jogo funcional sem backend centralizado
 
 ---
 
-## 💾 Storage em Smart Contracts
+## 💾 Storage na Stellar
 
-### Conceitos Fundamentais
+### Tipos de Storage
 
-#### **Estado Persistente**
-- **Definição**: Dados que persistem entre chamadas do contrato
-- **Localização**: Armazenado na blockchain
-- **Custo**: Cada operação de storage tem custo em XLM
+Na Stellar, existem 3 tipos principais de storage:
 
-#### **Tipos de Storage**
-- **Temporary**: Dados que existem apenas durante a execução
-- **Persistent**: Dados que persistem entre transações
-- **Instance**: Dados específicos da instância do contrato
+1. **Instance**: Dados do contrato (vida útil atrelada ao contrato)
+2. **Persistent**: Dados independentes (podem expirar separadamente)
+3. **Temporary**: Dados temporários (vida útil curta)
 
-### Exemplo Prático: Contador
+### Sistema de Aluguel
+
+- Contratos e dados são **alugados**, não "pagos para sempre"
+- Precisa renovar periodicamente
+
+---
+
+## 🎮 Tap Game - Smart Contract
+
+### Estrutura do Jogo
 
 ```rust
-#![no_std]
-use soroban_sdk::{contractimpl, contracttype, Env, Symbol, Address};
-
 #[contracttype]
-#[derive(Clone, Debug, Eq, PartialEq)]
-pub struct DataKey {
-    pub owner: Address,
-    pub counter: Symbol,
+pub struct Game {
+    pub player: Address,
+    pub score: u32,
+    pub nickname: String,
 }
-
-pub struct CounterContract;
 
 #[contractimpl]
-impl CounterContract {
-    pub fn increment(env: Env, owner: Address) -> u32 {
-        let key = DataKey {
-            owner: owner.clone(),
-            counter: Symbol::new(&env, "counter"),
-        };
-        
-        let current_count: u32 = env.storage().get(&key).unwrap_or(0);
-        let new_count = current_count + 1;
-        
-        env.storage().set(&key, &new_count);
-        new_count
-    }
+impl TapContract {
+    // Salvar pontuação do jogador
+    pub fn save_game(env: Env, player: Address, score: u32, nickname: String)
     
-    pub fn get_count(env: Env, owner: Address) -> u32 {
-        let key = DataKey {
-            owner: owner.clone(),
-            counter: Symbol::new(&env, "counter"),
-        };
-        
-        env.storage().get(&key).unwrap_or(0)
-    }
+    // Obter ranking dos jogadores
+    pub fn get_ranking(env: Env) -> Vec<Game>
+    
+    // Inicializar o contrato
+    pub fn initialize(env: Env)
 }
 ```
+
+### Como funciona
+
+1. **Jogador clica** no botão no frontend
+2. **Frontend chama** a função `save_game` no contrato
+3. **Contrato salva** a pontuação na blockchain
+4. **Ranking é atualizado** automaticamente
 
 ---
 
-## 🔗 Integração com Backend
+## 🌐 Frontend React Descentralizado
 
-### Arquitetura de Integração
+### Abordagem Web2-like
+
+- **Geração automática** de carteiras (sem wallet complexa)
+- **Interface simples** para jogar
+- **Ranking em tempo real**
+- **Conexão direta** com smart contract
+
+### Tecnologias usadas
+
+- **React** para interface
+- **Stellar SDK** para interação com blockchain
+- **TypeScript** para tipagem
+
+### Arquitetura Descentralizada
 
 ```
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│   Frontend  │───▶│    API      │───▶│   Stellar   │
-│             │    │  Backend    │    │  Network    │
-└─────────────┘    └─────────────┘    └─────────────┘
+Frontend React
+    ↓ (conexão direta)
+Smart Contract (Rust)
+    ↓ (dados na blockchain)
+Stellar Network
 ```
 
-### Padrões de Integração
-
-#### **1. API Gateway Pattern**
-- **Função**: Centralizar chamadas para smart contracts
-- **Vantagens**: Cache, rate limiting, autenticação
-- **Implementação**: REST API que chama Stellar CLI
-
-#### **2. Event-Driven Pattern**
-- **Função**: Reagir a eventos da blockchain
-- **Vantagens**: Desacoplamento, escalabilidade
-- **Implementação**: Webhooks + message queues
-
-### Exemplo: API Backend em Rust
-
-```rust
-use actix_web::{web, App, HttpServer, Result};
-use serde::{Deserialize, Serialize};
-use std::process::Command;
-
-#[derive(Deserialize)]
-struct IncrementRequest {
-    owner_address: String,
-}
-
-#[derive(Serialize)]
-struct IncrementResponse {
-    new_count: u32,
-    transaction_hash: String,
-}
-
-async fn increment_counter(req: web::Json<IncrementRequest>) -> Result<web::Json<IncrementResponse>> {
-    // Chamar smart contract via Stellar CLI
-    let output = Command::new("stellar")
-        .args(&[
-            "contract", "invoke",
-            "--id", "CONTRACT_ID",
-            "--source", "WALLET_KEY",
-            "--", "increment",
-            "owner", &req.owner_address
-        ])
-        .output()
-        .expect("Failed to execute command");
-    
-    // Parse resultado
-    let result = String::from_utf8_lossy(&output.stdout);
-    
-    Ok(web::Json(IncrementResponse {
-        new_count: 0, // Parse from result
-        transaction_hash: "hash".to_string(), // Parse from result
-    }))
-}
-
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
-        App::new()
-            .route("/increment", web::post().to(increment_counter))
-    })
-    .bind("127.0.0.1:8080")?
-    .run()
-    .await
-}
-```
+**Sem backend centralizado!** O frontend conecta diretamente ao smart contract.
 
 ---
 
-## 🔐 Segurança em Integrações
+## 🔗 Integração Frontend + Smart Contract
 
-### Boas Práticas
-
-#### **1. Autenticação e Autorização**
-```rust
-// Verificar assinatura da transação
-pub fn verify_signature(env: &Env, signature: &[u8], message: &[u8]) -> bool {
-    // Implementar verificação de assinatura
-    true
-}
-```
-
-#### **2. Rate Limiting**
-- **Objetivo**: Prevenir spam e ataques
-- **Implementação**: Contadores por endereço
-- **Custo**: Considerar custos de storage
-
-#### **3. Input Validation**
-```rust
-pub fn validate_input(env: &Env, input: &str) -> Result<(), Error> {
-    if input.len() > 100 {
-        return Err(Error::from_type_and_code(1, 1));
-    }
-    Ok(())
-}
-```
-
-### Padrões de Segurança
-
-#### **Access Control**
-```rust
-pub fn require_owner(env: &Env, caller: &Address, owner: &Address) {
-    if caller != owner {
-        panic!("Unauthorized access");
-    }
-}
-```
-
-#### **Reentrancy Protection**
-```rust
-use soroban_sdk::symbol_short;
-
-pub fn protected_function(env: &Env) {
-    let key = symbol_short!("locked");
-    if env.storage().has(&key) {
-        panic!("Function is locked");
-    }
-    
-    env.storage().set(&key, &true);
-    // Execute function logic
-    env.storage().set(&key, &false);
-}
-```
-
----
-
-## 🏗️ Aplicação Full-Stack
-
-### Estrutura do Projeto
+### Fluxo do Jogo
 
 ```
-smart-contract-app/
-├── contracts/
-│   ├── counter/
-│   └── voting/
-├── backend/
-│   ├── src/
-│   ├── Cargo.toml
-│   └── .env
-├── frontend/
-│   ├── src/
-│   └── package.json
-└── README.md
+1. Usuário acessa o site
+2. Sistema gera carteira automaticamente
+3. Usuário clica para jogar
+4. Frontend chama smart contract DIRETAMENTE
+5. Pontuação é salva na blockchain
+6. Ranking é atualizado
 ```
 
-### Backend API (Rust + Actix)
-
-```rust
-// main.rs
-use actix_web::{web, App, HttpServer};
-use serde::{Deserialize, Serialize};
-
-mod stellar_client;
-mod auth;
-mod routes;
-
-#[derive(Serialize)]
-struct ApiResponse<T> {
-    success: bool,
-    data: Option<T>,
-    error: Option<String>,
-}
-
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
-        App::new()
-            .service(routes::counter::scope())
-            .service(routes::voting::scope())
-    })
-    .bind("127.0.0.1:8080")?
-    .run()
-    .await
-}
-```
-
-### Cliente Stellar
-
-```rust
-// stellar_client.rs
-use std::process::Command;
-use serde_json::Value;
-
-pub struct StellarClient {
-    network: String,
-    wallet_key: String,
-}
-
-impl StellarClient {
-    pub fn new(network: String, wallet_key: String) -> Self {
-        Self { network, wallet_key }
-    }
-    
-    pub fn invoke_contract(&self, contract_id: &str, function: &str, args: &[&str]) -> Result<Value, Box<dyn std::error::Error>> {
-        let mut command = Command::new("stellar");
-        command.args(&["contract", "invoke", "--id", contract_id, "--source", &self.wallet_key, "--network", &self.network, "--", function]);
-        command.args(args);
-        
-        let output = command.output()?;
-        let result = String::from_utf8_lossy(&output.stdout);
-        
-        Ok(serde_json::from_str(&result)?)
-    }
-}
-```
-
----
-
-## 🧪 Testes de Integração
-
-### Testes End-to-End
-
-```rust
-#[cfg(test)]
-mod integration_tests {
-    use super::*;
-    use actix_web::test;
-
-    #[actix_web::test]
-    async fn test_increment_counter() {
-        let app = test::init_service(App::new().service(increment_counter)).await;
-        
-        let req = test::TestRequest::post()
-            .uri("/increment")
-            .set_json(IncrementRequest {
-                owner_address: "G...".to_string(),
-            })
-            .to_request();
-        
-        let resp = test::call_service(&app, req).await;
-        assert!(resp.status().is_success());
-    }
-}
-```
-
-### Testes de Smart Contract
-
-```rust
-#[cfg(test)]
-mod test {
-    use super::*;
-    use soroban_sdk::Address;
-
-    #[test]
-    fn test_increment() {
-        let env = Env::default();
-        let contract = CounterContract;
-        let owner = Address::random(&env);
-        
-        let count1 = contract.increment(&env, &owner);
-        assert_eq!(count1, 1);
-        
-        let count2 = contract.increment(&env, &owner);
-        assert_eq!(count2, 2);
-        
-        let stored_count = contract.get_count(&env, &owner);
-        assert_eq!(stored_count, 2);
-    }
-}
-```
-
----
-
-## 🚀 Deploy e Produção
-
-### Configuração de Ambiente
+### Comandos principais
 
 ```bash
-# Variáveis de ambiente
-export STELLAR_NETWORK=testnet
-export CONTRACT_ID=your_contract_id
-export WALLET_SECRET=your_wallet_secret
-export API_PORT=8080
+# Deploy do contrato
+stellar contract deploy --wasm tap_game.wasm
+
+# Interagir com o contrato
+stellar contract invoke --id <contract_id> -- save_game player "G..." score 100 nickname "Player1"
 ```
 
-### Docker Deployment
+---
 
-```dockerfile
-FROM rust:1.70 as builder
-WORKDIR /app
-COPY . .
-RUN cargo build --release
+## 📁 Estrutura do Projeto
 
-FROM debian:bullseye-slim
-RUN apt-get update && apt-get install -y ca-certificates
-COPY --from=builder /app/target/release/backend /usr/local/bin/
-EXPOSE 8080
-CMD ["backend"]
+O projeto completo está em: [nearx-tap-game](https://github.com/danielgorgonha/nearx-tap-game)
+
 ```
-
-### Monitoramento
-
-```rust
-use tracing::{info, error};
-
-pub async fn increment_with_logging(req: web::Json<IncrementRequest>) -> Result<web::Json<IncrementResponse>> {
-    info!("Incrementing counter for owner: {}", req.owner_address);
-    
-    match increment_counter(req).await {
-        Ok(response) => {
-            info!("Counter incremented successfully");
-            Ok(response)
-        }
-        Err(e) => {
-            error!("Failed to increment counter: {}", e);
-            Err(e)
-        }
-    }
-}
+nearx-tap-game/
+├── web3/           # Smart Contract (Rust)
+├── frontend/       # Interface React (DESCENTRALIZADO)
+│                   # └── Conecta DIRETAMENTE ao smart contract
+└── backend/        # Demonstração Python (próxima aula)
+                    # └── Exemplo de outras linguagens
 ```
 
 ---
@@ -397,28 +138,23 @@ pub async fn increment_with_logging(req: web::Json<IncrementRequest>) -> Result<
 ## 🎯 Próximos Passos
 
 ### Aula 3 (Próxima)
-- Integração com frontend
-- Interface de usuário para smart contracts
-- Aplicações web completas
+- **Stellar SDK Python** para demonstrar outras linguagens
+- **Mesma funcionalidade** em Python
+- **Multi-linguagem** - não é backend para o frontend
 
 ### Desafios Práticos
-- ✅ Implementar sistema de votação
-- ✅ Criar API REST completa
-- ✅ Adicionar autenticação JWT
-- ✅ Implementar cache Redis
+- ✅ Implementar o Tap Game descentralizado
+- ✅ Adicionar mais funcionalidades
+- ✅ Criar interface personalizada
+- ✅ Explorar outras funcionalidades do smart contract
 
 ---
 
-## 📚 Recursos Adicionais
+## 📚 Recursos
 
-### Documentação
-- [Soroban Storage](https://soroban.stellar.org/docs/fundamentals-and-concepts/storage)
-- [Actix Web](https://actix.rs/)
-- [Stellar CLI](https://soroban.stellar.org/docs/getting-started/setup)
-
-### Exemplos
-- [Soroban Examples](https://github.com/stellar/soroban-examples)
-- [Stellar Quest](https://quest.stellar.org/)
+- **Repositório**: [nearx-tap-game](https://github.com/danielgorgonha/nearx-tap-game)
+- **Documentação Stellar**: [soroban.stellar.org](https://soroban.stellar.org)
+- **Stellar SDK**: [stellar-sdk](https://github.com/stellar/js-stellar-sdk)
 
 ---
 
