@@ -128,6 +128,7 @@ Baseado em experiência de desenvolvimento backend sênior, os conceitos básico
 - **[calculator](https://github.com/danielgorgonha/calculator)** - Biblioteca matemática avançada com funções power/logarithm
 - **[interactive-calculator](https://github.com/danielgorgonha/interactive-calculator)** - Aplicação interativa funcional
 - **[learn-rust-crud](https://github.com/danielgorgonha/learn-rust-crud)** - API CRUD + WASM pronta para produção
+- **[spotpay](https://github.com/danielgorgonha/spotpay)** - Sistema de pagamentos completo com segurança avançada
 
 #### **🏆 Principais Conquistas:**
 - **Excelência em Segurança**: Autenticação JWT + Refresh tokens + Acesso owner-only
@@ -136,6 +137,10 @@ Baseado em experiência de desenvolvimento backend sênior, os conceitos básico
 - **Estratégia de Testes**: Suites de testes automatizados com scripts shell
 - **Documentação**: Docs completas da API + Collections Postman
 - **Arquitetura Enterprise**: Design modular + Tratamento de erros + Logging
+- **Blockchain Integration**: Smart contracts Stellar/Soroban + Frontend Next.js
+- **Threat Modeling**: Análise STRIDE completa + Implementação de segurança
+- **Sistema de Pagamentos**: SpotPay com processamento seguro de transações
+- **Segurança Avançada**: Framework STRIDE + Threat Modeling + Auditoria de código
 
 #### **💡 Práticas de Desenvolvedor Sênior Aplicadas:**
 - **Escalabilidade**: Dos conceitos básicos às aplicações de produção
@@ -144,6 +149,19 @@ Baseado em experiência de desenvolvimento backend sênior, os conceitos básico
 - **Testing Strategy**: Testes automatizados abrangentes
 - **Documentation**: Documentação profissional e completa
 - **Production Ready**: Deployado, monitorado e mantido
+
+#### **🎯 Projeto SpotPay - Destaque Especial:**
+O **SpotPay** representa a culminação de todos os conceitos aprendidos no bootcamp, implementando um sistema de pagamentos completo que demonstra:
+
+- **🔐 Segurança Enterprise**: Implementação completa do framework STRIDE para análise de ameaças
+- **🛡️ Threat Modeling**: Mapeamento sistemático de vulnerabilidades e implementação de controles
+- **💰 Sistema de Pagamentos**: Processamento seguro de transações com verificação de integridade
+- **📊 Auditoria Completa**: Logs de auditoria e rastreamento de todas as operações
+- **🧪 Testes de Segurança**: Cobertura completa de cenários de segurança e penetração
+- **📚 Documentação de Segurança**: Processo de incidente e postmortem documentados
+- **🚀 Produção Ready**: Código auditado e pronto para ambiente de produção
+
+**Link do Projeto**: [SpotPay - GitHub Repository](https://github.com/danielgorgonha/spotpay)
 
 ---
 
@@ -171,6 +189,12 @@ Baseado em experiência de desenvolvimento backend sênior, os conceitos básico
 - [📱 r/rust](https://reddit.com/r/rust) - Subreddit do Rust
 - [🎯 Rustlings](https://github.com/rust-lang/rustlings) - Exercícios interativos
 - [🏆 Rust Quiz](https://dtolnay.github.io/rust-quiz/) - Teste seu conhecimento
+
+### **Projetos de Referência do Bootcamp**
+- [💰 SpotPay](https://github.com/danielgorgonha/spotpay) - Sistema de pagamentos com segurança avançada
+- [🧮 Calculator Library](https://github.com/danielgorgonha/calculator) - Biblioteca matemática em Rust
+- [🖥️ Interactive Calculator](https://github.com/danielgorgonha/interactive-calculator) - Aplicação CLI interativa
+- [🚀 Learn Rust CRUD](https://github.com/danielgorgonha/learn-rust-crud) - API REST completa
 
 ### **Desenvolvimento Web e APIs**
 - [📖 Tide Documentation](https://docs.rs/tide) - Documentação oficial do framework Tide

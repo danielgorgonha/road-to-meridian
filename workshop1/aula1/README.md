@@ -342,6 +342,23 @@ Interactive command-line calculator that:
 - 🛡️ **Robust Error Handling:** Invalid inputs gracefully handled
 - 🎨 **User-Friendly Interface:** Emojis and clear formatting
 
+### 💰 SpotPay - Projeto Final
+**[📦 GitHub Repository](https://github.com/danielgorgonha/spotpay)**
+
+Sistema de pagamentos completo que demonstra a aplicação prática de todos os conceitos da Aula 1:
+- ✅ **Arquitetura Modular** - Organização em módulos especializados
+- ✅ **Tratamento de Erros** - Error handling robusto e seguro
+- ✅ **Testes Abrangentes** - Cobertura completa de testes
+- ✅ **Documentação Completa** - README detalhado e comentários
+- ✅ **Sistema de Pagamentos** - Funcionalidades reais de processamento
+
+**Características Técnicas:**
+- 🏗️ **Estrutura Rust** - Projeto bem organizado com Cargo.toml
+- 🔒 **Segurança** - Implementação de boas práticas de segurança
+- 📊 **Relatórios** - Sistema de geração de relatórios
+- 🧪 **Qualidade** - Testes unitários e de integração
+- 📚 **Documentação** - Código bem documentado e README completo
+
 ### 🚀 Getting Started
 
 To use these projects:
@@ -355,6 +372,12 @@ cargo test
 # Clone the interactive calculator
 git clone https://github.com/danielgorgonha/interactive-calculator.git
 cd interactive-calculator
+cargo run
+
+# Clone the SpotPay project (Final Project)
+git clone https://github.com/danielgorgonha/spotpay.git
+cd spotpay
+cargo test
 cargo run
 ```
 
@@ -391,6 +414,7 @@ fn main() {
 ✅ **Interactive Application** - Created CLI calculator using our published library  
 ✅ **Advanced Features** - Implemented power and logarithm functions  
 ✅ **Real-World Integration** - Demonstrated library usage in external projects  
+✅ **Complete Project Implementation** - Built SpotPay as a practical application of all concepts  
 
 ### **Core Rust Concepts Mastered:**
 🦀 **Language Fundamentals** - Types, functions, modules, ownership  
@@ -416,4 +440,60 @@ fn main() {
 
 ---
 
-*This lesson provides the foundation for advanced Rust development and prepares you for the Meridian Hackathon challenges! 🚀*
+## 🎉 **Finalização da Aula 1 - Projeto SpotPay**
+
+### **Projeto Final Implementado:**
+🚀 **[SpotPay - GitHub Repository](https://github.com/danielgorgonha/spotpay)**
+
+O projeto SpotPay representa a aplicação prática de todos os conceitos aprendidos na Aula 1, demonstrando como os fundamentos de Rust podem ser aplicados em um projeto real e funcional.
+
+### **Conceitos Aplicados no SpotPay:**
+✅ **Estrutura de Projeto Rust** - Organização modular com `Cargo.toml` e estrutura de pastas  
+✅ **Módulos e Funções** - Separação de responsabilidades em diferentes módulos  
+✅ **Tipos e Estruturas** - Uso adequado de tipos Rust para dados do sistema  
+✅ **Tratamento de Erros** - Implementação robusta de error handling  
+✅ **Testes Automatizados** - Suite completa de testes para garantir qualidade  
+✅ **Documentação** - README detalhado e comentários no código  
+
+### **Funcionalidades do SpotPay:**
+- 💰 **Sistema de Pagamentos** - Processamento seguro de transações
+- 🔐 **Autenticação** - Sistema de login e controle de acesso
+- 📊 **Relatórios** - Geração de relatórios financeiros
+- 🛡️ **Segurança** - Implementação de boas práticas de segurança
+- 🧪 **Testes** - Cobertura completa de testes unitários e de integração
+
+### **Imagens do Projeto:**
+
+*As imagens abaixo mostram a interface e funcionalidades do SpotPay:*
+
+<!-- Adicione aqui as imagens do projeto SpotPay -->
+<!-- Exemplo: ![SpotPay Dashboard](assets/spotpay-dashboard.png) -->
+<!-- Exemplo: ![SpotPay Login](assets/spotpay-login.png) -->
+<!-- Exemplo: ![SpotPay Transactions](assets/spotpay-transactions.png) -->
+
+### **Como Executar o SpotPay:**
+
+```bash
+# Clone o repositório
+git clone https://github.com/danielgorgonha/spotpay.git
+cd spotpay
+
+# Execute os testes
+cargo test
+
+# Execute o projeto
+cargo run
+```
+
+### **Tecnologias Utilizadas:**
+- 🦀 **Rust** - Linguagem principal
+- 📦 **Cargo** - Gerenciador de dependências
+- 🧪 **Testing** - Framework de testes integrado
+- 📚 **Documentation** - Documentação automática com rustdoc
+
+### **Aprendizados Práticos:**
+Este projeto demonstra como os conceitos fundamentais de Rust aprendidos na aula podem ser aplicados para criar sistemas robustos e seguros, preparando os alunos para projetos mais complexos nas próximas aulas.
+
+---
+
+*This lesson provides the foundation for advanced Rust development and prepares you for the Meridian Hackathon challenges! The SpotPay project serves as a practical example of how these fundamentals can be applied in real-world applications. 🚀*

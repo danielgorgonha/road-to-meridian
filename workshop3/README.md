@@ -53,6 +53,29 @@ O Workshop 3 terá como projeto prático um **sistema de votação avançado** q
 - 🔗 **Composabilidade** entre contratos
 - 🛡️ **Segurança avançada** implementada
 
+### **🎯 Projeto SpotPay - Exemplo de Implementação Avançada**
+
+Como referência de implementação dos conceitos do Workshop 3, temos o **SpotPay** - um sistema de pagamentos completo que demonstra a aplicação prática de todos os tópicos avançados:
+
+#### **🔐 Segurança Avançada Implementada:**
+- ✅ **Framework STRIDE** - Análise sistemática de ameaças
+- ✅ **Threat Modeling** - Mapeamento completo de vulnerabilidades
+- ✅ **Autenticação robusta** - Sistema de autenticação multi-camadas
+- ✅ **Auditoria de código** - Processo de revisão e validação
+
+#### **🛡️ Padrões de Segurança:**
+- ✅ **Validação de entrada** - Sanitização de todos os inputs
+- ✅ **Controle de acesso** - Princípio do menor privilégio
+- ✅ **Logs de auditoria** - Rastreamento completo de operações
+- ✅ **Tratamento de erros** - Error handling robusto
+
+#### **🔗 Composabilidade Demonstrada:**
+- ✅ **Módulos especializados** - Separação de responsabilidades
+- ✅ **Integração entre componentes** - Comunicação segura
+- ✅ **Arquitetura modular** - Design escalável e manutenível
+
+**Link do Projeto**: [SpotPay - GitHub Repository](https://github.com/danielgorgonha/spotpay)
+
 ---
 
 ## 📋 Pré-requisitos
@@ -72,10 +95,11 @@ O Workshop 3 terá como projeto prático um **sistema de votação avançado** q
 ## 🎓 Benefícios do Workshop 3
 
 ### **Para o Meridian Hackathon**
-- 🚀 **Projetos mais robustos** e seguros
+- 🚀 **Projetos mais robustos** e seguros (exemplo: SpotPay)
 - 💡 **Ideias inovadoras** com composabilidade
 - 🏆 **Vantagem competitiva** com features avançadas
 - 🔧 **Ferramentas** para desenvolvimento rápido
+- 🛡️ **Segurança enterprise** implementada desde o início
 
 ### **Para a Carreira**
 - 📈 **Conhecimento avançado** em blockchain
@@ -98,6 +122,14 @@ O Workshop 3 terá como projeto prático um **sistema de votação avançado** q
 - [Stellar Quest](https://quest.stellar.org/)
 - [Dev 30K Challenges](https://github.com/nerex-education/dev30k)
 
+### **Projetos de Referência Avançados**
+- **[SpotPay](https://github.com/danielgorgonha/spotpay)** - Sistema de pagamentos com implementação completa de segurança avançada
+  - ✅ **Framework STRIDE** aplicado em projeto real
+  - ✅ **Threat Modeling** sistemático implementado
+  - ✅ **Segurança enterprise** com auditoria de código
+  - ✅ **Arquitetura modular** e composabilidade
+  - ✅ **Exemplo prático** de todos os conceitos do Workshop 3
+
 ---
 
 ## 🎯 Preparação para o Workshop
@@ -107,6 +139,7 @@ O Workshop 3 terá como projeto prático um **sistema de votação avançado** q
 2. **Praticar** Rust e smart contracts
 3. **Estudar** conceitos de segurança
 4. **Explorar** padrões de composabilidade
+5. **Analisar** o projeto SpotPay como referência de implementação
 
 ### **Durante o Workshop**
 1. **Participar** ativamente das aulas

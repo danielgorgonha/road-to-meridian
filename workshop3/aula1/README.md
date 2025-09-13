@@ -310,12 +310,112 @@ Este exemplo demonstra como **mapear o sistema** antes de implementar:
 
 ---
 
+## 🎉 **Projeto SpotPay - Aplicação Prática dos Conceitos de Segurança**
+
+### **Projeto Final Implementado:**
+🚀 **[SpotPay - GitHub Repository](https://github.com/danielgorgonha/spotpay)**
+
+O projeto SpotPay demonstra a aplicação prática de todos os conceitos de segurança aprendidos nesta aula, implementando um sistema de pagamentos robusto e seguro.
+
+### **Conceitos de Segurança Aplicados no SpotPay:**
+
+#### **🔐 Autenticação e Autorização**
+- ✅ **`_check_auth` implementado** - Sistema de autenticação robusto
+- ✅ **Pre-hooks configuráveis** - Validações personalizadas antes da autenticação
+- ✅ **Autenticação múltipla** - Suporte a múltiplos usuários na mesma transação
+- ✅ **Regras de acesso** - Controle granular de permissões
+
+#### **🛡️ Threat Modeling Aplicado**
+- ✅ **Mapeamento do sistema** - Entidades, processos e fluxos de dados identificados
+- ✅ **Framework STRIDE** - Análise sistemática de vulnerabilidades
+- ✅ **Matriz de risco** - Priorização de ameaças por impacto e probabilidade
+- ✅ **Mitigação de ameaças** - Implementação de controles de segurança
+
+#### **💾 Gestão de Storage e TTL**
+- ✅ **Storage Types otimizados** - Uso adequado de Instance, Persistent e Temporary
+- ✅ **TTL management** - Controle eficiente do tempo de vida dos dados
+- ✅ **Extensão de TTL** - Sistema para renovação de dados críticos
+- ✅ **Custos otimizados** - Balanceamento entre segurança e eficiência
+
+#### **🔒 Segurança em Produção**
+- ✅ **Testes abrangentes** - Cobertura completa de cenários de segurança
+- ✅ **Validação de entrada** - Sanitização e validação de todos os inputs
+- ✅ **Error handling** - Tratamento robusto de erros e exceções
+- ✅ **Documentação de segurança** - Processo de incidente e postmortem
+
+### **Funcionalidades de Segurança do SpotPay:**
+- 🔐 **Sistema de Autenticação** - Login seguro com validação de credenciais
+- 💰 **Processamento de Pagamentos** - Transações seguras com verificação de integridade
+- 📊 **Auditoria e Logs** - Rastreamento completo de todas as operações
+- 🛡️ **Proteção contra Ataques** - Implementação de controles contra DDoS, spoofing e tampering
+- 🔄 **Backup e Recuperação** - Sistema de backup automático e recuperação de dados
+
+### **Aplicação do Framework STRIDE no SpotPay:**
+
+#### **S - Spoofing (Falsificação)**
+- ✅ **Autenticação robusta** - Verificação de identidade em todas as operações
+- ✅ **Validação de assinaturas** - Verificação criptográfica de transações
+
+#### **T - Tampering (Adulteração)**
+- ✅ **Integridade de dados** - Hash e assinaturas para verificar integridade
+- ✅ **Validação de entrada** - Sanitização de todos os inputs do usuário
+
+#### **R - Repudiation (Repúdio)**
+- ✅ **Logs de auditoria** - Registro imutável de todas as operações
+- ✅ **Assinaturas digitais** - Prova criptográfica de autoria
+
+#### **I - Information Disclosure (Divulgação)**
+- ✅ **Criptografia de dados** - Dados sensíveis protegidos
+- ✅ **Controle de acesso** - Limitação de acesso baseada em permissões
+
+#### **D - Denial of Service (Negação de Serviço)**
+- ✅ **Rate limiting** - Controle de taxa de requisições
+- ✅ **Resource management** - Gestão eficiente de recursos do sistema
+
+#### **E - Elevation of Privilege (Elevação de Privilégio)**
+- ✅ **Princípio do menor privilégio** - Usuários têm apenas permissões necessárias
+- ✅ **Validação de permissões** - Verificação contínua de autorização
+
+### **Como Executar o SpotPay:**
+
+```bash
+# Clone o repositório
+git clone https://github.com/danielgorgonha/spotpay.git
+cd spotpay
+
+# Execute os testes de segurança
+cargo test security
+
+# Execute o projeto
+cargo run
+```
+
+### **Validação de Segurança:**
+- ✅ **Diagrama de fluxo de dados** foi referenciado durante todo o desenvolvimento
+- ✅ **Modelo STRIDE** revelou e endereçou vulnerabilidades críticas
+- ✅ **Tratamentos de segurança** implementados adequadamente
+- ✅ **Auditoria de código** realizada antes da publicação
+
+### **Mentalidade de Segurança Aplicada:**
+- 🎯 **"Você está seguro sobre isso?"** - Questionamento constante durante desenvolvimento
+- ✅ **"Você assina embaixo?"** - Responsabilidade pessoal pelo código de produção
+- 🔍 **"Nunca 100% seguro"** - Consciência de que segurança é um processo contínuo
+- 📋 **"Sempre revisar"** - Revisão e auditoria contínuas do código
+
+---
+
 ## 📚 **Recursos Adicionais**
 
 ### **Documentação**
 - [Soroban Security](https://soroban.stellar.org/docs/security)
 - [Stellar Smart Contracts](https://soroban.stellar.org/)
 - [TTL Documentation](https://soroban.stellar.org/docs/fundamentals-and-concepts/state-archival)
+
+### **Projetos de Referência**
+- **[SpotPay](https://github.com/danielgorgonha/spotpay)** - Sistema de pagamentos com implementação completa de conceitos de segurança
+- **Exemplo prático** de aplicação do framework STRIDE
+- **Implementação real** de Threat Modeling em smart contracts
+- **Código de produção** com auditoria de segurança
 
 ### **Ferramentas**
 - **Analisador estático** para Stellar/Soroban (similar ao Slither para EVM)
