@@ -213,42 +213,7 @@ pub fn validate_input(env: &Env, input: &str) -> Result<(), Error> {
 
 ## 📚 Recursos Adicionais
 
-### **Documentação Oficial**
-- [⭐ Stellar Documentation](https://developers.stellar.org/) - Documentação oficial
-- [🔧 Soroban Documentation](https://soroban.stellar.org/) - Smart contracts
-- [💡 Stellar Quest](https://quest.stellar.org/) - Aprenda Stellar
-- [🌐 Stellar Ecosystem](https://www.stellar.org/ecosystem) - Projetos e ferramentas
-
-### **Ferramentas**
-- [Stellar CLI](https://soroban.stellar.org/docs/getting-started/setup)
-- [Stellar Laboratory](https://laboratory.stellar.org/)
-- [Stellar Explorer](https://stellar.expert/)
-
-### **Comunidade**
-- [Stellar Discord](https://discord.gg/stellar)
-- [Rust Discord](https://discord.gg/rust-lang)
-- [NearX Community](https://nearx.com.br/)
-
-### **Exemplos e Tutoriais**
-- [Soroban Examples](https://github.com/stellar/soroban-examples)
-- [Stellar Quest](https://quest.stellar.org/)
-- [Rust Book](https://doc.rust-lang.org/book/)
-
----
-
-## 🎯 Próximos Passos
-
-### Após o Workshop 2
-- 🎯 Continuar para o Workshop 3: Smartcontracts Avançado
-- 🏆 Desenvolver projetos pessoais com Stellar
-- 🌟 Contribuir para o ecossistema Soroban
-- 💼 Explorar oportunidades em blockchain
-
-### Preparação para o Meridian
-- 🔧 Dominar Rust e Soroban
-- 🏗️ Criar projetos inovadores
-- 🔐 Entender segurança em smart contracts
-- 🚀 Preparar para o hackathon
+**Veja recursos completos no [README principal](../README.md#-recursos-adicionais).**
 
 ---
 

@@ -86,79 +86,21 @@ O Workshop 1 é o primeiro nível da série "Road to Meridian", focado nos funda
 
 ---
 
-## 🚀 **Expansões de Desenvolvedor Sênior**
+## 🚀 **Projetos Implementados**
 
-### **🎯 Implementações Avançadas**
+### **📦 Repositórios dos Projetos:**
+- **[calculator](https://github.com/danielgorgonha/calculator)** - Biblioteca matemática avançada
+- **[interactive-calculator](https://github.com/danielgorgonha/interactive-calculator)** - Aplicação interativa
+- **[learn-rust-crud](https://github.com/danielgorgonha/learn-rust-crud)** - API CRUD + WASM
 
-Baseado em experiência de desenvolvimento backend sênior, os conceitos básicos do workshop foram expandidos em **aplicações de nível enterprise prontas para produção**:
-
-#### **📦 Repositórios dos Projetos:**
-- **[calculator](https://github.com/danielgorgonha/calculator)** - Biblioteca matemática avançada com funções power/logarithm
-- **[interactive-calculator](https://github.com/danielgorgonha/interactive-calculator)** - Aplicação interativa funcional
-- **[learn-rust-crud](https://github.com/danielgorgonha/learn-rust-crud)** - API CRUD + WASM pronta para produção
-
-#### **🏆 Principais Conquistas:**
-- **Excelência em Segurança**: Autenticação JWT + Refresh tokens + Acesso owner-only
-- **Otimização de Performance**: Cache WASM + Rate limiting + Métricas abrangentes
-- **Deploy em Produção**: APIs live no Railway com monitoramento
-- **Estratégia de Testes**: Suites de testes automatizados com scripts shell
-- **Documentação**: Docs completas da API + Collections Postman
-- **Arquitetura Enterprise**: Design modular + Tratamento de erros + Logging
-
-#### **💡 Práticas de Desenvolvedor Sênior Aplicadas:**
-- **Escalabilidade**: Dos conceitos básicos às aplicações de produção
-- **Security First**: Sistemas de autenticação e autorização
-- **Performance Focus**: Cache, monitoramento e otimização
-- **Testing Strategy**: Testes automatizados abrangentes
-- **Documentation**: Documentação profissional e completa
-- **Production Ready**: Deployado, monitorado e mantido
+**Veja detalhes completos das implementações avançadas no [README principal](../README.md#-expansões-de-desenvolvedor-sênior).**
 
 ---
 
 ## 📚 Recursos Adicionais
 
-### **Documentação Oficial**
-- [📖 The Rust Programming Language Book](https://doc.rust-lang.org/book/) - Livro oficial do Rust
-- [🔧 Rust Reference](https://doc.rust-lang.org/reference/) - Referência técnica completa
-- [📚 Rust by Example](https://doc.rust-lang.org/rust-by-example/) - Aprenda Rust com exemplos
-- [🛠️ Cargo Book](https://doc.rust-lang.org/cargo/) - Documentação do Cargo
+**Veja recursos completos no [README principal](../README.md#-recursos-adicionais).**
 
-### **Ferramentas e IDEs**
-- [🦀 rust-analyzer](https://rust-analyzer.github.io/) - Language server para IDEs
-- [📝 VS Code Rust Extension](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
-- [🐛 Rust Playground](https://play.rust-lang.org/) - Teste código online
-
-### **Comunidade e Aprendizado**
-- [💬 Rust Discord](https://discord.gg/rust-lang) - Comunidade oficial
-- [📱 r/rust](https://reddit.com/r/rust) - Subreddit do Rust
-- [🎯 Rustlings](https://github.com/rust-lang/rustlings) - Exercícios interativos
-- [🏆 Rust Quiz](https://dtolnay.github.io/rust-quiz/) - Teste seu conhecimento
-
-### **Desenvolvimento Web e APIs**
-- [📖 Tide Documentation](https://docs.rs/tide) - Documentação oficial do framework Tide
-- [🔧 Serde Documentation](https://serde.rs/) - Serialização/deserialização JSON
-- [🌐 Railway Documentation](https://docs.railway.app/) - Plataforma de deploy na nuvem
-- [📡 REST API Best Practices](https://restfulapi.net/) - Diretrizes de design de API
-
-### **Testes e Ferramentas de Desenvolvimento**
-- [🧪 Postman](https://www.postman.com/) - Testes e desenvolvimento de API
-- [📱 Insomnia](https://insomnia.rest/) - Alternativa ao Postman
-- [🔍 cURL Documentation](https://curl.se/docs/) - Cliente HTTP via linha de comando
-
-### **Vídeos e Cursos**
-- [🎥 Rust Tutorial for Beginners](https://www.youtube.com/watch?v=zF34dRivLOw)
-- [📺 Let's Get Rusty](https://www.youtube.com/c/LetsGetRusty) - Canal especializado
-- [🎓 Rust Crash Course](https://www.youtube.com/watch?v=zF34dRivLOw)
-
----
-
-## 🎯 Próximos Passos
-
-### Após o Workshop 1
-- 🎯 Continuar para o Workshop 2: Smartcontracts Básico
-- 🏆 Aplicar conhecimentos em projetos pessoais
-- 🌟 Contribuir para a comunidade Rust
-- 💼 Explorar oportunidades de carreira
 
 ---
 

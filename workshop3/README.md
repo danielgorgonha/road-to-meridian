@@ -53,26 +53,9 @@ O Workshop 3 terá como projeto prático um **sistema de votação avançado** q
 - 🔗 **Composabilidade** entre contratos
 - 🛡️ **Segurança avançada** implementada
 
-### **🎯 Projeto SpotPay - Exemplo de Implementação Avançada**
+### **🎯 Projeto SpotPay - Referência de Implementação**
 
-Como referência de implementação dos conceitos do Workshop 3, temos o **SpotPay** - um sistema de pagamentos completo que demonstra a aplicação prática de todos os tópicos avançados:
-
-#### **🔐 Segurança Avançada Implementada:**
-- ✅ **Framework STRIDE** - Análise sistemática de ameaças
-- ✅ **Threat Modeling** - Mapeamento completo de vulnerabilidades
-- ✅ **Autenticação robusta** - Sistema de autenticação multi-camadas
-- ✅ **Auditoria de código** - Processo de revisão e validação
-
-#### **🛡️ Padrões de Segurança:**
-- ✅ **Validação de entrada** - Sanitização de todos os inputs
-- ✅ **Controle de acesso** - Princípio do menor privilégio
-- ✅ **Logs de auditoria** - Rastreamento completo de operações
-- ✅ **Tratamento de erros** - Error handling robusto
-
-#### **🔗 Composabilidade Demonstrada:**
-- ✅ **Módulos especializados** - Separação de responsabilidades
-- ✅ **Integração entre componentes** - Comunicação segura
-- ✅ **Arquitetura modular** - Design escalável e manutenível
+O **SpotPay** demonstra a aplicação prática de todos os conceitos do Workshop 3. Veja detalhes completos no [README principal](../../README.md#-projeto-spotpay---destaque-especial).
 
 **Link do Projeto**: [SpotPay - GitHub Repository](https://github.com/danielgorgonha/spotpay)
 
@@ -111,24 +94,14 @@ Como referência de implementação dos conceitos do Workshop 3, temos o **SpotP
 
 ## 📚 Recursos Preparatórios
 
-### **Documentação Recomendada**
+**Veja recursos completos no [README principal](../README.md#-recursos-adicionais).**
+
+### **Recursos Específicos do Workshop 3**
 - [Soroban Security](https://soroban.stellar.org/docs/security)
 - [FIDO Alliance](https://fidoalliance.org/)
 - [WebAuthn Guide](https://webauthn.guide/)
-- [Stellar Smart Contracts](https://soroban.stellar.org/)
-
-### **Projetos para Estudo**
-- [Soroban Examples](https://github.com/stellar/soroban-examples)
-- [Stellar Quest](https://quest.stellar.org/)
 - [Dev 30K Challenges](https://github.com/nerex-education/dev30k)
 
-### **Projetos de Referência Avançados**
-- **[SpotPay](https://github.com/danielgorgonha/spotpay)** - Sistema de pagamentos com implementação completa de segurança avançada
-  - ✅ **Framework STRIDE** aplicado em projeto real
-  - ✅ **Threat Modeling** sistemático implementado
-  - ✅ **Segurança enterprise** com auditoria de código
-  - ✅ **Arquitetura modular** e composabilidade
-  - ✅ **Exemplo prático** de todos os conceitos do Workshop 3
 
 ---
 
@@ -161,39 +134,6 @@ Como referência de implementação dos conceitos do Workshop 3, temos o **SpotP
 - 📖 **Documentação** completa dos workshops
 - 🎥 **Vídeos** das aulas disponíveis
 - 💬 **Comunidade** para suporte
-- 🆕 **Atualizações** e novos conteúdos
-
----
-
-## 📞 Informações e Contato
-
-### **Organização**
-- **Plataforma**: Nerex Education
-- **Instrutor**: Lucas Oliveira
-- **Suporte**: [Discord Nerex](https://discord.gg/nerex)
-- **Email**: contato@nerex.com.br
-
-### **Redes Sociais**
-- **LinkedIn**: [Nerex Education](https://linkedin.com/company/nerex)
-- **YouTube**: [Nerex Channel](https://youtube.com/@nerex)
-- **GitHub**: [Nerex Projects](https://github.com/nerex-education)
-
----
-
-## 🎉 Meridian Hackathon
-
-### **Evento Principal**
-- **Data**: 15-16 de setembro 2025
-- **Local**: Copacabana Palace, Rio de Janeiro
-- **Participantes**: 500 desenvolvedores
-- **Premiação**: $50.000
-
-### **Workshop 3 como Preparação**
-O Workshop 3 é a **preparação final** para o Meridian, fornecendo:
-- 🛠️ **Ferramentas avançadas** para desenvolvimento
-- 💡 **Ideias inovadoras** para projetos
-- 🏆 **Vantagem competitiva** no hackathon
-- 🤝 **Networking** com especialistas
 
 ---
 
