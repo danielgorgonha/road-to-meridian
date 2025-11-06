@@ -22,10 +22,11 @@
 - ✅ **Testes de segurança** automatizados
 
 #### **2. Composabilidade entre Contratos**
-- ✅ **Interação entre contratos** na Stellar
-- ✅ **Padrões de composição** (DeFi-like)
-- ✅ **Orquestração** de múltiplos contratos
-- ✅ **Callbacks** e eventos entre contratos
+- ✅ **Cross Contract Calls** - Interação entre contratos
+- ✅ **Autenticação em Profundidade** - Passagem de contexto
+- ✅ **Deploy Pattern** - Criação dinâmica de contratos
+- ✅ **Upgrade Pattern** - Atualização mantendo estado
+- ✅ **Projeto Prático** - Loja de aplicativos completa
 
 #### **3. Autenticação Passkey (FIDO)**
 - ✅ **WebAuthn** e padrões FIDO

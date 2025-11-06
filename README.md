@@ -82,11 +82,11 @@
   - 📊 Análise estática de código
 
 - **[🚀 Aula 2: Composabilidade entre Contratos](./workshop3/aula2/README.md)**
-  - 🔗 Interação entre contratos
-  - 🏗️ Padrões de composição
-  - 📦 Arquiteturas modulares
-  - 🔄 Callbacks e eventos
-  - 🎯 DeFi patterns
+  - 🔗 Cross Contract Calls - Interação entre contratos
+  - 🔐 Autenticação em Profundidade - Passagem de contexto
+  - 🚀 Deploy Pattern - Criação dinâmica de contratos
+  - 🔄 Upgrade Pattern - Atualização mantendo estado
+  - 🏗️ Projeto Prático - Loja de aplicativos completa
 
 - **[🔐 Aula 3: Autenticação Passkey e Tópicos Avançados](./workshop3/aula3/README.md)**
   - 🔑 Autenticação Passkey (FIDO)
